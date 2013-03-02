@@ -1,0 +1,68 @@
+Bosch Rexroth
+http://www.boschrexroth.com/mobile-hydraulics-catalog/Vornavigation/Vornavi.cfm?Language=EN&VHist=g61480&PageID=m3844
+http://goo.gl/074Sq
+
+Power(kW)	Torque(kNm)	Ratio	Weight(kg)
+750	229	50	4300
+660	243	53	3900
+850	350	74/62	4500
+660	243	58	4500
+2000	1260	92/120	15300
+2000	1160	100	15400
+2000	1135	96	17000
+1800	1104	61	16350
+1500	870	73/98	13900	
+1500	870	78/98	14500
+1500	950	86/108	15000
+2500	1621	100	19500
+2200	1578	111	22000
+2000	1210	106	20700
+2000	1380	119	20700
+2500	1700	72	19000
+2500	1904	117	21600
+2500	1869	117	24700	
+
+Winergy - Multi Duored Gearbox, Hybrid Drive(combined gearbox and generator)
+http://www.winergy-group.com/root/img/pool/downloads/en/product-brochure-multi-duored-gearbox-winergy.pdf
+http://goo.gl/Kt9mF
+
+http://www.winergy-group.com/root/img/pool/downloads/en/product-brochure-hybriddrive-winergy.pdf
+http://goo.gl/SPVIc
+
+Power(kW)	Torque(kNm) Ratio	Weight(kg)
+6500	5500	?	62000
+3000	2000	?	25000
+3000	2500	?	31000
+
+Moventas- Hybrid Drive(Combined gearbox, generator)
+http://www.moventas.com/what-we-do/wind-gears/products/fusiondrive-r
+http://goo.gl/lgSl3
+Power(kW)	Diameter(m)	Weight(kg)
+3000	2.0	33000
+4500	2.4	38000
+6000	2.7	61000
+
+Eickhoff
+http://www.eickhoff-bochum.de/en/download/Eickhoff%20Windkraftgetriebe%20Prospekt_E.pdf
+http://goo.gl/YFgQJ
+
+Power(kw)	Torque(kNm)	Ratio	Weight(kg)
+1500	934	72-104	14000
+2000	1378	106-120	23800
+2500	1900	72-93.4	20300
+3300	2525	87.3	30000
+3600	2509	94-134.2	28000
+
+GE Drive Train
+http://gedrivetrain.com/assets/PDFs/GE_DrivetrainTechnologies_Gearboxes_broch.pdf
+http://goo.gl/1Af1i
+(Nice photos in the catalog)
+
+Power(kw)	Speed(rpm)	Torque(kNm)	Ratio		Weight(kg)
+1400/1800	16/20	700/970	59/86	15000
+1800/2300	14/18	980/1250	40/125	17000
+2000/2700	14.4/18	1400/1900	60/97	17700
+2300/2900	14/16	1500/1920	78/136	21100	
+
+From Gunther Auer (Acciona)
+to be added
