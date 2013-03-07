@@ -31,9 +31,9 @@ Siemens-air	4.4	11.1	96.8	96.9
 Siemens-air	4.9	11.8	97	97.1
 Siemens-air	5.3	12.9	97.3	97.2
 Siemens-air	5.8	13.45	97.3	97.3
-ABB	2	5.7	NA	NA
-ABB	2.1	6.7	NA	NA
-ABB	3	6	NA	NA
-ABB	4	8.5	NA	NA
-ABB	5.5	11	NA	NA
-ABB	7	15	NA	NA
+ABB	2	5.7	
+ABB	2.1	6.7	
+ABB	3	6	
+ABB	4	8.5	
+ABB	5.5	11	
+ABB	7	15	
