@@ -1,6 +1,7 @@
+## @knitr plot1gpm
 #Plot High Speed Induction Generator
 
-#setwd("./generator/")
+setwd("./generator/")
 g1pm_generator <- read.delim("1GPM-generator-data.txt")
 
 #Set colors
@@ -18,4 +19,3 @@ abline(linear_estimation, col="gray", lwd=2, lty=2)
 # display equation
 linear_coefficients <- round(coef(linear_estimation), 3) 
 mtext(bquote(Mass(t) == .(linear_coefficients[2])*Torque (kNm) + .(round(linear_coefficients[1],1))), adj=1, padj=7)
-
