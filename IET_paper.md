@@ -10,6 +10,14 @@ In this study, a design tool is developed to estimate the mass and efficiency of
 All these data are combined in an open-source design tool. The user can select different PTO systems, and then define the input power and rotational speed The design tool gives the mass and efficiency of the components. Thus, it is very easy for a user to compare different PTO systems and modify the mechanical models based on these estimations. The design tool is built using Matlab GUI. The aim of the study is to publish it as a web application that is open to wind turbine designers. We aim to expand the toolbox for the reliability calculation of the different PTO systems. The design tool will help the designers to compare different PTO systems and select the most suitable option for the specific application.
 
 
+```r
+# set global chunk options: images will be 7x5 inches
+opts_chunk$set(fig.width = 7, fig.height = 5, echo = TRUE)
+read_chunk("basit.R")
+read_chunk("./generator/plot_1gpm.R")
+```
+
+
 
 ```r
 # Plot High Speed Induction Generator
@@ -75,10 +83,52 @@ mtext(paste("Mass(t)=", coefficients[1], "xPower(MW)^", coefficients[2], sep = "
 You can also embed plots, for example:
 
 
+
+```r
+2 + 3
+```
+
+```
+## [1] 5
+```
+
 ```r
 plot(cars)
 ```
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2.png) 
+![plot of chunk basitplot](figure/basitplot.png) 
+
+```r
+##
+```
+
+
+
+
+```r
+# Plot High Speed Induction Generator
+
+setwd("./generator/")
+g1pm_generator <- read.delim("1GPM-generator-data.txt")
+
+# Set colors
+require("RColorBrewer")
+colors = brewer.pal(3, "Dark2")
+
+plot(g1pm_generator$Torque.kNm, g1pm_generator$Mass.t, pch = 21, lwd = 2, cex = 1.5, 
+    col = colors[1], bty = "l", las = 1, xlab = "Torque (kNm)", ylab = "Mass (t)")
+grid()
+
+linear_estimation <- lm(Mass.t ~ Torque.kNm, data = g1pm_generator)
+abline(linear_estimation, col = "gray", lwd = 2, lty = 2)
+
+# display equation
+linear_coefficients <- round(coef(linear_estimation), 3)
+mtext(bquote(Mass(t) == .(linear_coefficients[2]) * Torque(kNm) + .(round(linear_coefficients[1], 
+    1))), adj = 1, padj = 7)
+```
+
+![plot of chunk plot1gpm](figure/plot1gpm.png) 
+
 
 

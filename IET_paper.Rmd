@@ -9,6 +9,12 @@ Far offshore wind turbines can help to exploit the wind energy resources that re
 In this study, a design tool is developed to estimate the mass and efficiency of various power take-off (PTO) systems of a wind turbine. Data from manufacturers and literature are collected to obtain mass and efficiency trend lines for wind turbine components. For example, Figure 1 presents the mass variation of a three stage gearbox as a function of the input torque. The components covered at the moment are gearbox, generator, bearing and shaft. It is planned to add nacelle and blade mass estimation to the full paper submission. The generator types covered are induction generator, permanent-magnet generator, synchronous generator and superconducting generator. The cooling method for the generators are also defined (air or water cooled). 
 All these data are combined in an open-source design tool. The user can select different PTO systems, and then define the input power and rotational speed The design tool gives the mass and efficiency of the components. Thus, it is very easy for a user to compare different PTO systems and modify the mechanical models based on these estimations. The design tool is built using Matlab GUI. The aim of the study is to publish it as a web application that is open to wind turbine designers. We aim to expand the toolbox for the reliability calculation of the different PTO systems. The design tool will help the designers to compare different PTO systems and select the most suitable option for the specific application.
 
+```{r setup}
+# set global chunk options: images will be 7x5 inches
+opts_chunk$set(fig.width=7, fig.height=5, echo=TRUE)
+read_chunk("basit.R")
+read_chunk("./generator/plot_1gpm.R")
+```
 
 ```{r fig.width=7, fig.height=6}
 #Plot High Speed Induction Generator
@@ -55,7 +61,12 @@ mtext(paste("Mass(t)=",coefficients[1],"xPower(MW)^",coefficients[2], sep=""), 1
 
 You can also embed plots, for example:
 
-```{r fig.width=7, fig.height=6}
-plot(cars)
+
+```{r basitplot, fig.width=5, fig.height=4,echo=TRUE}
 ```
+
+
+```{r plot1gpm}
+```
+
 
