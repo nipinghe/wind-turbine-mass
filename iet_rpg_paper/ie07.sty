@@ -1,0 +1,137 @@
+% File ie2007.sty
+% This is the LaTeX style file for IE 2007.  It is adapted from the COLING/ACL 2006 style.
+
+% December 19, 2006
+% Contact: wolfgang.minker@uni-ulm.de
+
+\setlength{\paperwidth}{21cm}   % A4
+\setlength{\paperheight}{29.7cm}% A4
+\setlength\topmargin{-4mm}    %{-3mm}
+\setlength\oddsidemargin{-5.4mm}
+\setlength\textheight{24.9cm}
+\setlength\textwidth{17cm}
+\setlength\columnsep{0.4cm}%0.81cm}
+\newlength\titlebox
+\setlength\titlebox{4.9cm}
+\setlength\headheight{5pt}
+\setlength\headsep{0pt}
+\thispagestyle{empty}
+\pagestyle{empty}
+
+\flushbottom \twocolumn \sloppy %
+
+\def\addcontentsline#1#2#3{}
+
+\def\maketitle{\par
+ \begingroup
+ \def\thefootnote{\fnsymbol{footnote}}
+ \def\@makefnmark{\hbox to 0pt{$^{\@thefnmark}$\hss}}
+ \if@twocolumn
+   \twocolumn[\@maketitle]
+ \else
+   \global\@topnum\z@
+   \@maketitle
+ \fi
+ \@thanks
+ \endgroup
+ \setcounter{footnote}{0}
+ \let\maketitle\relax
+ \let\@maketitle\relax
+ }
+
+\def\@maketitle{
+  \begin{center}
+ {\LARGE\bf \@title \par}
+ \vskip 9mm
+ {\begin{tabular}[t]{c}%
+ \@author
+ \end{tabular}\par}%
+ \end{center}
+ \vskip 5ex
+}
+
+\def\authorname#1{\gdef\@authorname{#1}}
+\gdef\@authorname{Author}
+
+\def\authoraddr#1{\gdef\@authoraddr{#1}}
+\gdef\@authoraddr{Affiliation\\Country\\Contact Details}
+
+\author{
+  \begin{tabular}{c}
+  {\large\bf\@authorname}\\[5mm]
+  \@authoraddr
+  \end{tabular}
+}
+
+\renewcommand{\abstract}{\section*{Abstract}}
+\newcommand{\keywords}{\paragraph{Keywords:}}
+\newcommand{\acknowledgements}{\section*{Acknowledgements}}
+
+\def\section{\@startsection {section}{1}{\z@}{-3.0ex plus
+    -0.5ex minus -.2ex}{1.7ex plus 0.3ex minus .2ex}{\large\bf\raggedright}}
+\def\subsection{\@startsection{subsection}{2}{\z@}{-3.0ex plus
+    -0.5ex minus -.2ex}{1.7ex plus .2ex}{\normalsize\bf\raggedright}}
+\def\subsubsection{\@startsection{subsubsection}{3}{\z@}{-3.0 ex plus
+   -0.5ex minus -.2ex}{1.7ex plus .2ex}{\normalsize\bf\raggedright}}
+\def\paragraph{\@startsection{paragraph}{4}{\z@}{1.5ex plus
+   0.5ex minus .2ex}{-1em}{\normalsize\bf}}
+\def\subparagraph{\@startsection{subparagraph}{5}{\parindent}{1.5ex plus
+   0.5ex minus .2ex}{-1em}{\normalsize\bf}}
+
+\footnotesep 6.65pt %
+\skip\footins 9pt plus 4pt minus 2pt
+\def\footnoterule{\kern-3pt \hrule width 5pc \kern 2.6pt }
+\setcounter{footnote}{0}
+
+\parindent=0cm
+\topsep 4pt plus 1pt minus 2pt
+\partopsep 1pt plus 0.5pt minus 0.5pt
+\itemsep 2pt plus 1pt minus 0.5pt
+\parsep 2pt plus 1pt minus 0.5pt
+
+\leftmargin 2em \leftmargini\leftmargin \leftmarginii 2em
+\leftmarginiii 1.5em \leftmarginiv 1.0em \leftmarginv .5em \leftmarginvi .5em
+\labelwidth\leftmargini\advance\labelwidth-\labelsep \labelsep 5pt
+
+\def\@listi{\leftmargin\leftmargini}
+\def\@listii{\leftmargin\leftmarginii
+   \labelwidth\leftmarginii\advance\labelwidth-\labelsep
+   \topsep 2pt plus 1pt minus 0.5pt
+   \parsep 1pt plus 0.5pt minus 0.5pt
+   \itemsep \parsep}
+\def\@listiii{\leftmargin\leftmarginiii
+    \labelwidth\leftmarginiii\advance\labelwidth-\labelsep
+    \topsep 1pt plus 0.5pt minus 0.5pt 
+    \parsep \z@ \partopsep 0.5pt plus 0pt minus 0.5pt
+    \itemsep \topsep}
+\def\@listiv{\leftmargin\leftmarginiv
+     \labelwidth\leftmarginiv\advance\labelwidth-\labelsep}
+\def\@listv{\leftmargin\leftmarginv
+     \labelwidth\leftmarginv\advance\labelwidth-\labelsep}
+\def\@listvi{\leftmargin\leftmarginvi
+     \labelwidth\leftmarginvi\advance\labelwidth-\labelsep}
+
+\abovedisplayskip 7pt plus2pt minus5pt%
+\belowdisplayskip \abovedisplayskip
+\abovedisplayshortskip  0pt plus3pt%
+\belowdisplayshortskip  4pt plus3pt minus3pt%
+
+\def\@normalsize{\@setsize\normalsize{10pt}\xpt\@xpt}
+\def\small{\@setsize\small{9pt}\ixpt\@ixpt}
+\def\footnotesize{\@setsize\footnotesize{9pt}\ixpt\@ixpt}
+\def\scriptsize{\@setsize\scriptsize{8pt}\viipt\@viipt}
+\def\tiny{\@setsize\tiny{7pt}\vipt\@vipt}
+\def\large{\@setsize\large{12pt}\xiipt\@xiipt}
+\def\Large{\@setsize\Large{14pt}\xivpt\@xivpt}
+\def\LARGE{\@setsize\LARGE{18pt}\xviipt\@xviipt}
+\def\huge{\@setsize\huge{23pt}\xxpt\@xxpt}
+\def\Huge{\@setsize\Huge{28pt}\xxvpt\@xxvpt}
+
+\setlength{\parindent}{0mm}
+
+\renewcommand\thepart {\@Roman\c@part}
+\renewcommand\thesection {\@arabic\c@section}
+\renewcommand\thesubsection   {\thesection.\@arabic\c@subsection}
+\renewcommand\thesubsubsection{\thesubsection.\@arabic\c@subsubsection}
+\renewcommand\theparagraph    {\thesubsubsection.\@arabic\c@paragraph}
+\renewcommand\thesubparagraph {\theparagraph.\@arabic\c@subparagraph}

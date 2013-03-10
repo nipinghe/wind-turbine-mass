@@ -1,0 +1,120 @@
+\documentclass{article}
+
+\usepackage{times}
+\usepackage{ie07}
+
+\begin{document}
+\noindent
+
+\bibliographystyle{plain}
+
+\title{INSTRUCTION FOR PREPARING MANUSCRIPTS FOR PAPERS SUBMITTED TO IE07}
+
+\authorname{Author(s) Name(s)}
+\authoraddr{Author Affiliation(s)}
+
+\maketitle
+
+\keywords
+Maximum 5 keywords placed before the abstract.
+
+\abstract
+This is where the abstract should be placed. It should
+consist of one paragraph and a concise summary of the
+material discussed in the article below. It is preferable not
+to use footnotes in the abstract or the title. The
+acknowledgement for funding organisations etc. is placed
+in a separate section at the end of the text. We wish you
+success with the preparation of your manuscript.
+
+\section{Introduction}
+The proceedings for IE 07 will contain all the accepted
+papers following the peer review process. Authors are
+asked to prepare and submit the {\bf PDF} electronic versions
+of their full papers according to the instructions below.
+
+\section{Manuscript preparation}
+Full papers must be typed in English. The title of the
+paper is typed in CAPITAL LETTERS (boldface 18pt)
+and centred on the page. The author's name is typed in
+capital and lower case bold letters and centred on the
+page. Directly under the author's name in capital and
+lower case letters and also centred is the author's
+affiliation, address, plus e-mail address and fax number of
+(at least) the corresponding author. Manuscripts must be
+typed single spaced using 10 point characters. Only
+Times, Times Roman, Times New Roman and Symbol
+fonts are accepted. The text should be typed on an A4
+paper (21 cm x 29.7 cm). The paper should have margins
+of 2.4 cm from top and bottom and 2 cm from left and
+right. Paragraphs are separated by 6 points and with no
+indentation. The text of the full papers is written in two
+columns and justified. Each column has a width of 8.3 cm
+and the columns are separated by a margin of 0.4 cm. The
+maximum length of the full paper is 8 pages, of the short
+and the demo paper 4 pages. Do not number the pages.
+The final format in which the papers will appear on the
+CD ROM will be a PDF file. Authors are requested to send
+a PDF file of their final paper to be included directly
+in the CD ROM.
+
+\subsection{Figures and tables}
+Figures and tables should be centred in the column,
+numbered consecutively throughout the text, and each
+should have a caption underneath it (see for example
+Table~\ref{tab1}). Care should be taken that the lettering
+is not too small. All figures and tables should be included
+in the electronic versions of the full paper.
+
+
+\begin{table}[htb!]
+\begin{center}
+
+\begin{tabular}{|l|l|}
+\hline
+{\em n} & {\em n!} \\
+\hline
+1 & 1  \\
+2 & 2  \\
+3  & 6\\
+\hline
+\end{tabular}
+\end{center}
+\caption{\label{tab1}This is an example of a table caption.}
+\end{table}
+
+\subsubsection{Equations}
+Equations should be typed within the text, centred, and
+should be numbered consecutively throughout the text.
+They should be referred to in the text as Equation (n).
+Their numbers should be typed in parentheses, flush right,
+as in the following example.
+\begin{equation}
+	    PA + A'P - PBR^{-1}B'P + Q  =  0 \enspace.
+\end{equation}
+
+\subsubsection{References}
+The list of references should be ordered alphabetically
+according to the first author surname. All references
+should be cited in the text, and using square brackets such
+as \cite{ref01} and \cite{ref02}.
+
+\section{Generating a {PDF} file}
+The PDF format will be the final format under which the
+papers will appear in the {CD ROM}. You {\bf SHOULD}
+submit your paper as {PDF} document.
+
+\section{Electronic submission of the full paper}
+You should submit your {PDF} file which should adhere to
+the above format via the conference paper submission
+system.
+
+\section*{Acknowledgements}
+The acknowledgement for funding organisations etc.
+should be placed in a separate section at the end of the
+text. Thank you for your cooperation in complying with
+these instructions.
+
+\bibliography{ie07}
+
+\end{document}

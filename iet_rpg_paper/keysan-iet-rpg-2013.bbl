@@ -1,0 +1,14 @@
+\begin{thebibliography}{1}
+
+\bibitem{ref01}
+A.~B. Author and C.~D. Author.
+\newblock {Title of the Article}.
+\newblock {\em {The Journal}}, 2006.
+
+\bibitem{ref02}
+E.~Author and F.~Author.
+\newblock {Title of the Paper}.
+\newblock In {\em {International Conference on Something}}, Place (Country),
+  2007.
+
+\end{thebibliography}
