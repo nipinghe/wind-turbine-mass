@@ -14,6 +14,17 @@ All these data are combined in an open-source design tool. The user can select d
 # set global chunk options: images will be 7x5 inches
 opts_chunk$set(fig.width = 7, fig.height = 5, echo = TRUE)
 read_chunk("basit.R")
+```
+
+```
+## Warning: cannot open file 'basit.R': No such file or directory
+```
+
+```
+## Error: cannot open the connection
+```
+
+```r
 read_chunk("./generator/plot_1gpm.R")
 ```
 
@@ -84,23 +95,6 @@ You can also embed plots, for example:
 
 
 
-```r
-2 + 3
-```
-
-```
-## [1] 5
-```
-
-```r
-plot(cars)
-```
-
-![plot of chunk basitplot](figure/basitplot.png) 
-
-```r
-##
-```
 
 
 
