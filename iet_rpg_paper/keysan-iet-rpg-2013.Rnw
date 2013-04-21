@@ -38,40 +38,24 @@ success with the preparation of your manuscript.
 
 \section{Introduction}
 
-Far offshore wind turbines can help to exploit the wind energy resources that remained untapped so far. These turbines are planned to be installed as floating platforms due to high water depths. Reliability and mechanical stability is the most important issues of floating wind turbines. The nacelle mass is critical for the mechanical stability of the platform. A heavy nacelle requires larger ballast and increases the installation cost. The type of the power take-off system has a direct effect on the nacelle mass.
+Far offshore wind turbines can help to exploit the wind energy resources that remained untapped so far. These turbines are planned to be installed as floating platforms due to  high water depths (\textgreater 40 m). Reliability and mechanical stability is the most important issues of floating wind turbines. The nacelle mass is critical for the mechanical stability of the platform \cite{Sethuraman2013,Christiansen2011}. A higher mass on the top of the tower increases the center of mass significantly, and this should be balanced with a larger ballast, which increases the installation cost. 
 
-Although, doubly-fed induction generator coupled to a multi-stage gearbox the most common power take-off (PTO) type for onshore wind turbines; it may not be the most suitable option for a large offshore wind turbine.
+Although, doubly-fed induction generator coupled to a multi-stage gearbox is the most common power take-off (PTO) type for onshore wind turbines; it may not be the most suitable option for a large offshore wind turbine. A direct-drive power take-off systems can be used to eliminate the gearbox, but the mass of a direct-drive generator can be larger than a high-speed power take-off system depending on the power rating and diameter.
 
-gelistir
 
-Data from manufacturers and literature are collected and then used to predict the  mass and efficiency trend lines for wind turbine components. These components then used to built an open-source tool that can estimate the mass and efficiency of the total PTO system. Users can modify the data and models using the tools defined in Appendix-A.
+In this study, data from manufacturers and literature are collected to predict the  mass and efficiency trend lines for wind turbine components. These equations are used to build an open-source tool that can estimate the mass and efficiency of the total power take-off system. Users can modify the data and models using the tools defined in Appendix-A.
 
 \section{Power Take-Off Components}
 
-The power take-off components in a wind turbine can be listed as: bearing, shaft, gearbox (if applicable), and generator. 
+The main power take-off components in a wind turbine can be listed as: bearing, shaft, gearbox (if applicable), and generator. 
 
 \subsection{Gearbox}
 
-\subsubsection{Single Stage Gearbox}
-Gear ratios up to 15:1 can be obtained using a single stage gearbox \cite{Cotrell2002}. Single-stage gearboxes usually consist of a planetary stage with various numbers of gears depending on the power rating. Single stage gearboxes have fewer gears and bearings than the high-speed gearboxes, so they have a higher reliability. Moreover, their efficiencies are higher than 3-stage gearboxes. In \cite{Matveev2011}, the efficiency of a single stage gearbox is given as:
-
-\begin{equation}
-  \text{Efficiency(\%)} = 99.5 - \dfrac{P_{in}}{P_{rated}}
-\end{equation}
-
-Mass of a single-stage gearbox coupled with medium-speed generator can be approximated as in \cite{Fingersh2006}:
-
-\begin{equation}
-	\text{Mass(t)} = 88.3 \times {T_{in}}^{0.774}
-\end{equation}
-
-where $T_{input}$ is the input torque in kNm.
-
 \subsubsection{Multi Stage Gearbox}
 
-The most common gearbox type is three-stage gearbox, which increases the turbine speed to approximately 1500 rpm. The data from three-stage gearbox manufacturers are collected and plotted in \autoref{fig:gearbox}.
-The mass of a three-stage gearbox can be expressed in terms of the input torque as presented in \autoref{3G_gearbox}. Data from the following manufacturers are collected; Bosch-Rexroth\cite{bosch}, Winergy\cite{winergy}, Moventas\cite{Moventas}, Eickhoff\cite{eickhoff}, and General Electric\cite{GE}. 
+The most common gearbox type used in wind turbines is the three-stage gearbox, which increases the turbine speed to approximately 1500 rpm. Three-stage geraboxes are usually connected to asynchronous generators. 
 
+Data from the following three-stage wind turbine gearbox manufacturers are collected: Bosch-Rexroth\cite{bosch}, Winergy\cite{winergy}, Moventas\cite{Moventas}, Eickhoff\cite{eickhoff}, and General Electric\cite{GE}, and plotted in \autoref{fig:gearbox}. From the figure, it may be seen that the mass of the gearbox is proportional to input torque, which is represented as a linear function in \autoref{3G_gearbox}. 
 
 <<gearbox, fig.cap="Mass of three-stage gearboxes versus torque.">>=
 #Plot Gearbox data
@@ -81,7 +65,7 @@ colors = brewer.pal(4,"Dark2")
 
 plot(gearbox$Torque.kNm, gearbox$Weight.kg/1000, pch=as.numeric(gearbox$Manufacturer)+21, 
      las=1, col=colors[gearbox$Manufacturer], bty="l", xlim=c(0,6000), ylim=c(0,62),
-     xlab="Torque (kNm)", ylab="Mass (t)")
+     xlab="Input Torque (kNm)", ylab="Mass (t)")
 grid()
 
 #Add Legend
@@ -99,6 +83,32 @@ linear_coefficients <- round(coef(linear_estimation), 3)
 \text{Mass(t)} = 0.011 \times T_{in} + 3.7
 \label{3G_gearbox}
 \end{equation}
+
+Multi-stage gearboxes usually consist of two planetary gear stages and an additional high-speed parallel-shaft helical gear stage. In \cite{Hau2005a} it is stated that each planetary gear stages have 1 \% power loss and each helical gear stages have 2 \% power loss. Thus, the efficiency of a three-stage gearbox can be represented as in \cite{Zhang2011a}:
+
+\begin{equation}
+  \text{Efficiency(\%)} = 97.0 - \dfrac{P_{in}}{P_{rated}}
+\end{equation}
+
+The equation implies that the efficiency of a three-stage gearbox varies from 97 \% at no load to 96 \% at full load.
+
+
+\subsubsection{Single Stage Gearbox}
+
+Gear ratios up to 15:1 can be achieved using a single stage gearbox \cite{Cotrell2002}. Single-stage gearboxes usually consist of a planetary stage with various numbers of gears depending on the power rating. Single stage gearboxes have fewer gears and bearings than the high-speed gearboxes, which inreased the reliability. Moreover, their efficiencies are higher than 3-stage gearboxes. In \cite{Matveev2011}, the efficiency of a single stage gearbox is given as:
+
+\begin{equation}
+  \text{Efficiency(\%)} = 99.5 - \dfrac{P_{in}}{P_{rated}}
+\end{equation}
+
+Mass of a single-stage gearbox coupled with medium-speed generator can be approximated as in \cite{Fingersh2006}:
+
+\begin{equation}
+	\text{Mass(t)} = 88.3 \times {T_{in}}^{0.774}
+\end{equation}
+
+where $T_{input}$ is the input torque in kNm.
+
 
 \subsection{Structural Components}
 
@@ -204,7 +214,7 @@ colors = brewer.pal(3,"Dark2")
 plot(g1pm_generator$Torque.kNm, g1pm_generator$Mass.t,pch=21, cex=1.5, 
      col=colors[1], bty="l", las=1,
      xlab="Torque (kNm)", ylab="Mass (t)")
-#grid()
+
 linear_estimation<-lm(Mass.t ~ Torque.kNm, data=g1pm_generator)
 abline(linear_estimation, col="gray", lwd=2, lty=2)
 # display equation
@@ -323,7 +333,7 @@ should be placed in a separate section at the end of the
 text. Thank you for your cooperation in complying with
 these instructions.
 
-\bibliography{ie07}
+\bibliography{IET_RPG_2013}
 \noindent
 \bibliographystyle{plain}
 
