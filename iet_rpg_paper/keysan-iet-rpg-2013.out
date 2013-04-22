@@ -1,10 +1,22 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}
 \BOOKMARK [1][-]{section.2}{Power Take-Off Components}{}
 \BOOKMARK [2][-]{subsection.2.1}{Gearbox}{section.2}
-\BOOKMARK [2][-]{subsection.2.2}{Generator}{section.2}
-\BOOKMARK [1][-]{section.3}{Manuscript preparation}{}
-\BOOKMARK [2][-]{subsection.3.1}{Figures and tables}{section.3}
-\BOOKMARK [3][-]{subsubsection.3.1.1}{Equations}{subsection.3.1}
-\BOOKMARK [3][-]{subsubsection.3.1.2}{References}{subsection.3.1}
-\BOOKMARK [1][-]{section.4}{Generating a PDF file}{}
-\BOOKMARK [1][-]{section.5}{Electronic submission of the full paper}{}
+\BOOKMARK [3][-]{subsubsection.2.1.1}{Multi Stage Gearbox}{subsection.2.1}
+\BOOKMARK [3][-]{subsubsection.2.1.2}{Single Stage Gearbox}{subsection.2.1}
+\BOOKMARK [2][-]{subsection.2.2}{Structural Components}{section.2}
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Low Speed Shaft}{subsection.2.2}
+\BOOKMARK [3][-]{subsubsection.2.2.2}{Main Bearing}{subsection.2.2}
+\BOOKMARK [2][-]{subsection.2.3}{Hydraulic Systems}{section.2}
+\BOOKMARK [2][-]{subsection.2.4}{Generator}{section.2}
+\BOOKMARK [3][-]{subsubsection.2.4.1}{Induction Generator}{subsection.2.4}
+\BOOKMARK [2][-]{subsection.2.5}{Direct Drive Synchronous Generator}{section.2}
+\BOOKMARK [2][-]{subsection.2.6}{Permanent Magnet Generator}{section.2}
+\BOOKMARK [3][-]{subsubsection.2.6.1}{Direct Drive}{subsection.2.6}
+\BOOKMARK [3][-]{subsubsection.2.6.2}{Medium Speed}{subsection.2.6}
+\BOOKMARK [1][-]{section.3}{Open Source Tool}{}
+\BOOKMARK [1][-]{section.4}{Manuscript preparation}{}
+\BOOKMARK [2][-]{subsection.4.1}{Figures and tables}{section.4}
+\BOOKMARK [3][-]{subsubsection.4.1.1}{Equations}{subsection.4.1}
+\BOOKMARK [3][-]{subsubsection.4.1.2}{References}{subsection.4.1}
+\BOOKMARK [1][-]{section.5}{Generating a PDF file}{}
+\BOOKMARK [1][-]{section.6}{Electronic submission of the full paper}{}

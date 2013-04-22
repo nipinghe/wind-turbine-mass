@@ -4,6 +4,14 @@
 \usepackage{hyperref}
 \usepackage{amsmath}
 
+% put paranthesis after equation
+% http://www.latex-community.org/forum/viewtopic.php?f=4&t=334
+\makeatletter
+\def\tagform@#1{\maketag@@@{\ignorespaces#1\unskip\@@italiccorr}}
+\let\orgtheequation\theequation
+\def\theequation{(\orgtheequation)}
+\makeatother
+    
 
 
 \usepackage{Sweave}
@@ -36,7 +44,6 @@ Far offshore wind turbines can help to exploit the wind energy resources that re
 
 Although, doubly-fed induction generator coupled to a multi-stage gearbox is the most common power take-off (PTO) type for onshore wind turbines; it may not be the most suitable option for a large offshore wind turbine. A direct-drive power take-off systems can be used to eliminate the gearbox, but the mass of a direct-drive generator can be larger than a high-speed power take-off system depending on the power rating and diameter.
 
-
 In this study, data from manufacturers and literature are collected to predict the  mass and efficiency trend lines for wind turbine components. These equations are used to build an open-source tool that can estimate the mass and efficiency of the total power take-off system. Users can modify the data and models using the tools defined in Appendix-A.
 
 \section{Power Take-Off Components}
@@ -47,20 +54,18 @@ The main power take-off components in a wind turbine can be listed as: bearing, 
 
 \subsubsection{Multi Stage Gearbox}
 
-The most common gearbox type used in wind turbines is the three-stage gearbox, which increases the turbine speed to approximately 1500 rpm. Three-stage geraboxes are usually connected to asynchronous generators. 
-
+The most common gearbox type is three-stage gearbox, which increases the turbine speed to approximately 1500 rpm. 
 Data from the following three-stage wind turbine gearbox manufacturers are collected: Bosch-Rexroth\cite{bosch}, Winergy\cite{winergy}, Moventas\cite{Moventas}, Eickhoff\cite{eickhoff}, and General Electric\cite{GE}, and plotted in \autoref{fig:gearbox}. From the figure, it may be seen that the mass of the gearbox is proportional to input torque, which is represented as a linear function in \autoref{3G_gearbox}. 
 
 \begin{Schunk}
 \begin{Sinput}
 > #Plot Gearbox data
-> require("knitr")
-> require("RColorBrewer", quietly=TRUE)
+> 
 > gearbox <- read.delim("../gearbox/gearbox_data.txt")
 > colors = brewer.pal(4,"Dark2")
 > plot(gearbox$Torque.kNm, gearbox$Weight.kg/1000, pch=as.numeric(gearbox$Manufacturer)+21, 
 +      las=1, col=colors[gearbox$Manufacturer], bty="l", xlim=c(0,6000), ylim=c(0,62),
-+      xlab="Torque (kNm)", ylab="Mass (t)")
++      xlab="Input Torque (kNm)", ylab="Mass (t)")
 > grid()
 > #Add Legend
 > legend(3600,45, legend=levels(gearbox$Manufacturer), col=colors,pch=22:25,
@@ -73,23 +78,23 @@ Data from the following three-stage wind turbine gearbox manufacturers are colle
 >  #     adj=1, padj=0)
 \end{Sinput}
 \end{Schunk}
+
 \begin{equation}
 \text{Mass(t)} = 0.011 \times T_{in} + 3.7
 \label{3G_gearbox}
 \end{equation}
 
-Multi-stage gearboxes usually consist of two planetary gear stages and an additional high-speed parallel-shaft helical gear stage. In \cite{Hau2005a} it is stated that each planetary gear stages have 1 \% power loss and each helical gear stages have 2 \% power loss. Thus, the efficiency of a three-stage gearbox can be represented as in \cite{Zhang2011a}:
+
+Multi-stage gearboxes usually consist of two planetary gear stages and an additional high-speed parallel-shaft helical gear stage. In \cite{Hau2005a} it is stated that each planetary gear stages have 1 \% power loss and each helical gear stages have 2 \% power loss. Thus, the efficiency of a three-stage gearbox can be represented as in \autoref{3G_efficiency} \cite{Zhang2011a}. The equation implies that the efficiency of a three-stage gearbox varies from 97 \% at no load to 96 \% at full load.
 
 \begin{equation}
   \text{Efficiency(\%)} = 97.0 - \dfrac{P_{in}}{P_{rated}}
+  \label{3G_efficiency}
 \end{equation}
-
-The equation implies that the efficiency of a three-stage gearbox varies from 97 \% at no load to 96 \% at full load.
-
 
 \subsubsection{Single Stage Gearbox}
 
-Gear ratios up to 15:1 can be achieved using a single stage gearbox \cite{Cotrell2002}. Single-stage gearboxes usually consist of a planetary stage with various numbers of gears depending on the power rating. Single stage gearboxes have fewer gears and bearings than the high-speed gearboxes, which inreased the reliability. Moreover, their efficiencies are higher than 3-stage gearboxes. In \cite{Matveev2011}, the efficiency of a single stage gearbox is given as:
+Gear ratios up to 15:1 can be achieved using a single stage gearbox \cite{Cotrell2002}. Single-stage gearboxes usually consist of a planetary stage with various numbers of gears depending on the power rating. Single stage gearboxes have fewer gears and bearings than high-speed gearboxes, which inreases the reliability. Moreover, their efficiencies are higher than multi-stage gearboxes. In \cite{Matveev2011}, the efficiency of a single stage gearbox is given as:
 
 \begin{equation}
   \text{Efficiency(\%)} = 99.5 - \dfrac{P_{in}}{P_{rated}}
@@ -98,7 +103,7 @@ Gear ratios up to 15:1 can be achieved using a single stage gearbox \cite{Cotrel
 Mass of a single-stage gearbox coupled with medium-speed generator can be approximated as in \cite{Fingersh2006}:
 
 \begin{equation}
-	\text{Mass(t)} = 88.3 \times {T_{in}}^{0.774}
+	\text{Mass(t)} = 88.3 \times {T_{in(kNm)}}^{0.774}
 \end{equation}
 
 where $T_{input}$ is the input torque in kNm.
@@ -107,27 +112,47 @@ where $T_{input}$ is the input torque in kNm.
 \subsection{Structural Components}
 
 \subsubsection{Low Speed Shaft}
-Low speed shaft is not a critical component; it connects the main hub to gearbox or generator. Low speed shaft is not required for some drive train options (e.g. integrated bearing type). The mass and the cost of the low speed shaft as a function of the rotor diameter can be expressed as \cite{Fingersh2006}:
+Low speed shaft is not a critical component; it connects the main hub to the gearbox or to the generator. Low speed shaft is not required for some drive train options (e.g. integrated bearing type). In \cite{Fingersh2006}, the mass and the cost of the low speed shaft is presented as a function of the turbine diameter.
 
 \begin{equation}
-	\text{Mass (t)} = 1.35 \times {P_{rated}}^{1.44}
+		\text{Mass (t)} = 1.35 \times {P_{rated(MW)}}^{1.44}
 \end{equation}
 
-\subsectiion{Main Bearing}
+\subsubsection{Main Bearing}
 
-The mass of the main bearing can vary depending on the bearing type. For example, a double-tapered roller bearing for a direct-drive is heavier than a conventional two-point suspension type bearing. To give and idea the mass of a conventional bearing that is connected to a three-stage gearbox can be estimated as \cite{Fingersh2006};
+The mass of the main bearing can vary depending on the bearing type. For example, a double-tapered roller bearing for a direct-drive is heavier than a conventional two-point suspension type bearing. In  \cite{Fingersh2006}, the mass of the main bearing is presented as a function of turbine diameter. Assuming mass of the bearing housing is equal to bearing mass, the mass of the main bearing system can be expressed as a function of the rated power as in \autoref{mass_bearing}.
 
 \begin{equation}
-	\text{Mass(t)} = 130 \times {P_{rated}}^{1.75}
+	\text{Mass(t)} = 0.26 \times {P_{rated(MW)}}^{1.75}
+  \label{mass_bearing}
 \end{equation}
 
 \subsection{Hydraulic Systems}
 
 \subsection{Generator}
-The generator types covered are induction generator, permanent-magnet generator, synchronous generator and superconducting generator. The cooling method for the generators are also defined (air or water cooled). 
-All these data are combined in an open-source design tool. The user can select different PTO systems, and then define the input power and rotational speed The design tool gives the mass and efficiency of the components. Thus, it is very easy for a user to compare different PTO systems and modify the mechanical models based on these estimations. The design tool is built using Matlab GUI. The aim of the study is to publish it as a web application that is open to wind turbine designers. We aim to expand the toolbox for the reliability calculation of the different PTO systems. The design tool will help the designers to compare different PTO systems and select the most suitable option for the specific application.
 
-<<<<<<< HEAD
+The generator types covered are induction generator, permanent-magnet generator, synchronous generator and superconducting generator. The cooling methods for induction and synchronous generators are also defined (air-cooled or water-cooled). 
+
+\subsubsection{Induction Generator}
+
+Induction generators are the most common generator type used in wind turbines. Squirrel cage induction generators are preffered for small wind turbines, where doubly-fed induction generators are preffered for large wind turbines. Mass data for various power rated machines (4-poles) from ABB and Siemens catalogues are collected \cite{ABB2012, Siemens}, which are plotted in \autoref{fig:induction_generator}. Trend lines for Siemens machines show that, the water-cooled induction generators are 18 \% lighter than the air-cooled ones. The mass of generators as a function of the rated power can be expressed as in \autoref{mass-air} and \autoref{mass-water}.
+
+
+\begin{equation}
+  \text{Mass}_{air-cooled}(t) = 3.91 \times {P_{rated(MW)}}^{0.69}
+  \label{mass-air}
+\end{equation}
+
+\begin{equation}
+  \text{Mass}_{water-cooled}(t) = 3.22 \times {P_{rated(MW)}}^{0.68}
+  \label{mass-water}
+\end{equation}
+
+\begin{equation}
+\text{Efficiency (\%)} = 95.64 \times {P_{rated(MW)}}^{0.01}
+\end{equation}
+
+
 \begin{Schunk}
 \begin{Sinput}
 > #Plot High Speed Induction Generator
@@ -161,6 +186,30 @@ All these data are combined in an open-source design tool. The user can select d
 \end{Sinput}
 \end{Schunk}
 
+\begin{Schunk}
+\begin{Sinput}
+> #Set colors
+> colors = brewer.pal(3,"Dark2")
+> plot(induction_generator$Power.MW, induction_generator$Efficiency.full, 
++      pch=as.numeric(induction_generator$Manufacturer)+21, 
++      col=colors[induction_generator$Manufacturer], bty="l", xlim=c(0,8), ylim=c(95,98),yaxt="n", las=1,xlab="Power (MW)", ylab="Efficiency (%)")
+> axis(2, at=c(95,96,97,98),las=1)
+> grid()
+> legend(3.5,96.2, legend=c("Siemens (Air cooled)", "Siemens (Water cooled)"), 
++        col=colors[2:3], pch=23:25,cex=0.8,pt.cex=1,lty=0, x.intersp=0.4, ncol=1, bty="n")
+> #Siemens Machines
+> subset_data <- subset(induction_generator, Manufacturer!="ABB", c(Power.MW, Mass.t))
+> # Non-linear modeln(power fit)
+> fit <- nls(Efficiency.full ~ a*Power.MW^b,data = induction_generator, 
++          start=list(a = 95, b = 0.01))
+> #Plot power estimation
+> power_fine <- seq(0, 7.5, length = 101)
+> lines(power_fine, predict(fit, list(Power.MW= power_fine)), lty=2,lwd=2, col="darkgray")
+> 
+> #coefficients <- round(coef(fit), 2) 
+> #mtext(paste("Efficiency (%)=",coefficients[1],"xPower(MW)^",coefficients[2], sep=""), 3,-3.5)
+\end{Sinput}
+\end{Schunk}
 
 
 \begin{Schunk}
@@ -171,7 +220,6 @@ All these data are combined in an open-source design tool. The user can select d
 > plot(g1pm_generator$Torque.kNm, g1pm_generator$Mass.t,pch=21, cex=1.5, 
 +      col=colors[1], bty="l", las=1,
 +      xlab="Torque (kNm)", ylab="Mass (t)")
-> #grid()
 > linear_estimation<-lm(Mass.t ~ Torque.kNm, data=g1pm_generator)
 > abline(linear_estimation, col="gray", lwd=2, lty=2)
 > # display equation
@@ -179,51 +227,6 @@ All these data are combined in an open-source design tool. The user can select d
 > mtext(bquote(Mass(t) == .(linear_coefficients[2])*Torque (kNm) + .(round(linear_coefficients[1],1))), adj=1, padj=3, cex=0.8)
 \end{Sinput}
 \end{Schunk}
-=======
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{figure}[]
-
-\includegraphics[width=\maxwidth]{figure/induction_generator} \caption[Mass of the induction generator vs torque]{Mass of the induction generator vs torque.\label{fig:induction_generator}}
-\end{figure}
-
-
-\end{knitrout}
-
-
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{figure}[]
-
-\includegraphics[width=\maxwidth]{figure/induction_generator_eeficiency} \caption[Mass of the induction generator vs torque]{Mass of the induction generator vs torque.\label{fig:induction_generator_eeficiency}}
-\end{figure}
-
-
-\end{knitrout}
-
-
-\begin{equation}
-  \text{Mass}_{air}(t) = 3.91 \times {P_{rated}}^{0.69}
-\end{equation}
-
-\begin{equation}
-  \text{Mass}_{water}(t) = 3.22 \times {P_{rated}}^{0.68}
-\end{equation}
-
-\begin{equation}
-\text{Efficiency (\%)} = 95.64 \times {P_{rated}}^{0.01}
-\end{equation}
-
-
-
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{figure}[]
-
-\includegraphics[width=\maxwidth]{figure/plot1gpm} \caption[Mass of the medium speed permanent magnet generator vs torque]{Mass of the medium speed permanent magnet generator vs torque.\label{fig:plot1gpm}}
-\end{figure}
-
-
-\end{knitrout}
-
->>>>>>> 80dd2bfeee1a7113922810e61f6285e82e8c3fba
 
 
 \subsection{Direct Drive Synchronous Generator}
@@ -247,12 +250,15 @@ All these data are combined in an open-source design tool. The user can select d
   \text{Mass(t)} = 0.03 \times {T_{rated}} + 1.5
 \end{equation}
 
-As shonw in \autoref{fig:plot1gpm}
+As shown in \autoref{fig:plot1gpm}
 
 The proceedings for IE 07 will contain all the accepted
 papers following the peer review process. Authors are
 asked to prepare and submit the {\bf PDF} electronic versions
 of their full papers according to the instructions below.
+
+\section{Open Source Tool}
+All these data are combined in an open-source design tool. The user can select different PTO systems, and then define the input power and rotational speed The design tool gives the mass and efficiency of the components. Thus, it is very easy for a user to compare different PTO systems and modify the mechanical models based on these estimations. The design tool is built using Matlab GUI. The aim of the study is to publish it as a web application that is open to wind turbine designers. We aim to expand the toolbox for the reliability calculation of the different PTO systems. The design tool will help the designers to compare different PTO systems and select the most suitable option for the specific application.
 
 \section{Manuscript preparation}
 Full papers must be typed in English. The title of the

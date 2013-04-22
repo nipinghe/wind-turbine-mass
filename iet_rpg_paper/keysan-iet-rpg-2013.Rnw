@@ -4,6 +4,15 @@
 \usepackage{hyperref}
 \usepackage{amsmath}
 
+% put paranthesis after equation
+% http://www.latex-community.org/forum/viewtopic.php?f=4&t=334
+\makeatletter
+\def\tagform@#1{\maketag@@@{\ignorespaces#1\unskip\@@italiccorr}}
+\let\orgtheequation\theequation
+\def\theequation{(\orgtheequation)}
+\makeatother
+    
+
 <<MainSettings,echo=FALSE,cache=FALSE,warning=FALSE,message=FALSE>>=
 # http://www.ibspan.waw.pl/~gagolews/?page=resources&subpage=tips
 require("knitr")
@@ -38,23 +47,11 @@ success with the preparation of your manuscript.
 
 \section{Introduction}
 
-<<<<<<< HEAD
-Far offshore wind turbines can help to exploit the wind energy resources that remained untapped so far. These turbines are planned to be installed as floating platforms due to high water depths. Reliability and mechanical stability is the most important issues of floating wind turbines. The nacelle mass is critical for the mechanical stability of the platform. A heavy nacelle requires larger ballast and increases the installation cost. The type of the power take-off system has a direct effect on the nacelle mass.
-=======
 Far offshore wind turbines can help to exploit the wind energy resources that remained untapped so far. These turbines are planned to be installed as floating platforms due to  high water depths (\textgreater 40 m). Reliability and mechanical stability is the most important issues of floating wind turbines. The nacelle mass is critical for the mechanical stability of the platform \cite{Sethuraman2013,Christiansen2011}. A higher mass on the top of the tower increases the center of mass significantly, and this should be balanced with a larger ballast, which increases the installation cost. 
 
 Although, doubly-fed induction generator coupled to a multi-stage gearbox is the most common power take-off (PTO) type for onshore wind turbines; it may not be the most suitable option for a large offshore wind turbine. A direct-drive power take-off systems can be used to eliminate the gearbox, but the mass of a direct-drive generator can be larger than a high-speed power take-off system depending on the power rating and diameter.
->>>>>>> 80dd2bfeee1a7113922810e61f6285e82e8c3fba
 
-Although, doubly-fed induction generator coupled to a multi-stage gearbox the most common power take-off (PTO) type for onshore wind turbines; it may not be the most suitable option for a large offshore wind turbine.
-
-<<<<<<< HEAD
-gelistir
-
-Data from manufacturers and literature are collected and then used to predict the  mass and efficiency trend lines for wind turbine components. These components then used to built an open-source tool that can estimate the mass and efficiency of the total PTO system. Users can modify the data and models using the tools defined in Appendix-A.
-=======
 In this study, data from manufacturers and literature are collected to predict the  mass and efficiency trend lines for wind turbine components. These equations are used to build an open-source tool that can estimate the mass and efficiency of the total power take-off system. Users can modify the data and models using the tools defined in Appendix-A.
->>>>>>> 80dd2bfeee1a7113922810e61f6285e82e8c3fba
 
 \section{Power Take-Off Components}
 
@@ -62,32 +59,9 @@ The main power take-off components in a wind turbine can be listed as: bearing, 
 
 \subsection{Gearbox}
 
-<<<<<<< HEAD
-\subsubsection{Single Stage Gearbox}
-Gear ratios up to 15:1 can be obtained using a single stage gearbox \cite{Cotrell2002}. Single-stage gearboxes usually consist of a planetary stage with various numbers of gears depending on the power rating. Single stage gearboxes have fewer gears and bearings than the high-speed gearboxes, so they have a higher reliability. Moreover, their efficiencies are higher than 3-stage gearboxes. In \cite{Matveev2011}, the efficiency of a single stage gearbox is given as:
-
-\begin{equation}
-	Efficiency-1G= 99.5-\dfrac{P_{in}}{P_{rated}} \%
-\end{equation}
-
-Mass of a single-stage gearbox coupled with medium-speed generator can be approximated as in \cite{Fingersh2006}:
-
-\begin{equation}
-	Mass-1G-Drive = 88.3 \times T_{input}^0.774
-\end{equation}
-
-where $T_{input}$ is the input torque in kNm.
-
 \subsubsection{Multi Stage Gearbox}
 
-The most common gearbox type is three-stage gearbox, which increases the turbine speed to approximately 1500 rpm. The data from three-stage gearbox manufacturers are collected and plotted in \autoref{fig:gearbox}.
-The mass of a three-stage gearbox can be expressed in terms of the input torque as presented in \autoref{3G_gearbox}. Data from the following manufacturers are collected; Bosch-Rexroth\cite{bosch}, Winergy\cite{winergy}, Moventas\cite{Moventas}, Eickhoff\cite{eickhoff}, and General Electric\cite{GE}. 
-=======
-\subsubsection{Multi Stage Gearbox}
-
-The most common gearbox type used in wind turbines is the three-stage gearbox, which increases the turbine speed to approximately 1500 rpm. Three-stage geraboxes are usually connected to asynchronous generators. 
->>>>>>> 80dd2bfeee1a7113922810e61f6285e82e8c3fba
-
+The most common gearbox type is three-stage gearbox, which increases the turbine speed to approximately 1500 rpm. 
 Data from the following three-stage wind turbine gearbox manufacturers are collected: Bosch-Rexroth\cite{bosch}, Winergy\cite{winergy}, Moventas\cite{Moventas}, Eickhoff\cite{eickhoff}, and General Electric\cite{GE}, and plotted in \autoref{fig:gearbox}. From the figure, it may be seen that the mass of the gearbox is proportional to input torque, which is represented as a linear function in \autoref{3G_gearbox}. 
 
 <<gearbox, fig.cap="Mass of three-stage gearboxes versus torque.">>=
@@ -112,25 +86,23 @@ linear_coefficients <- round(coef(linear_estimation), 3)
 #mtext(bquote(Mass(t) == .(linear_coefficients[2])*Torque (kNm) + .(linear_coefficients[1])), 
  #     adj=1, padj=0)
 @
+
 \begin{equation}
 \text{Mass(t)} = 0.011 \times T_{in} + 3.7
 \label{3G_gearbox}
 \end{equation}
 
-<<<<<<< HEAD
-=======
-Multi-stage gearboxes usually consist of two planetary gear stages and an additional high-speed parallel-shaft helical gear stage. In \cite{Hau2005a} it is stated that each planetary gear stages have 1 \% power loss and each helical gear stages have 2 \% power loss. Thus, the efficiency of a three-stage gearbox can be represented as in \cite{Zhang2011a}:
+
+Multi-stage gearboxes usually consist of two planetary gear stages and an additional high-speed parallel-shaft helical gear stage. In \cite{Hau2005a} it is stated that each planetary gear stages have 1 \% power loss and each helical gear stages have 2 \% power loss. Thus, the efficiency of a three-stage gearbox can be represented as in \autoref{3G_efficiency} \cite{Zhang2011a}. The equation implies that the efficiency of a three-stage gearbox varies from 97 \% at no load to 96 \% at full load.
 
 \begin{equation}
   \text{Efficiency(\%)} = 97.0 - \dfrac{P_{in}}{P_{rated}}
+  \label{3G_efficiency}
 \end{equation}
-
-The equation implies that the efficiency of a three-stage gearbox varies from 97 \% at no load to 96 \% at full load.
-
 
 \subsubsection{Single Stage Gearbox}
 
-Gear ratios up to 15:1 can be achieved using a single stage gearbox \cite{Cotrell2002}. Single-stage gearboxes usually consist of a planetary stage with various numbers of gears depending on the power rating. Single stage gearboxes have fewer gears and bearings than the high-speed gearboxes, which inreased the reliability. Moreover, their efficiencies are higher than 3-stage gearboxes. In \cite{Matveev2011}, the efficiency of a single stage gearbox is given as:
+Gear ratios up to 15:1 can be achieved using a single stage gearbox \cite{Cotrell2002}. Single-stage gearboxes usually consist of a planetary stage with various numbers of gears depending on the power rating. Single stage gearboxes have fewer gears and bearings than high-speed gearboxes, which inreases the reliability. Moreover, their efficiencies are higher than multi-stage gearboxes. In \cite{Matveev2011}, the efficiency of a single stage gearbox is given as:
 
 \begin{equation}
   \text{Efficiency(\%)} = 99.5 - \dfrac{P_{in}}{P_{rated}}
@@ -139,43 +111,55 @@ Gear ratios up to 15:1 can be achieved using a single stage gearbox \cite{Cotrel
 Mass of a single-stage gearbox coupled with medium-speed generator can be approximated as in \cite{Fingersh2006}:
 
 \begin{equation}
-	\text{Mass(t)} = 88.3 \times {T_{in}}^{0.774}
+	\text{Mass(t)} = 88.3 \times {T_{in(kNm)}}^{0.774}
 \end{equation}
 
 where $T_{input}$ is the input torque in kNm.
 
 
->>>>>>> 80dd2bfeee1a7113922810e61f6285e82e8c3fba
 \subsection{Structural Components}
 
 \subsubsection{Low Speed Shaft}
-Low speed shaft is not a critical component; it connects the main hub to gearbox or generator. Low speed shaft is not required for some drive train options (e.g. integrated bearing type). The mass and the cost of the low speed shaft as a function of the rotor diameter can be expressed as \cite{Fingersh2006}:
+Low speed shaft is not a critical component; it connects the main hub to the gearbox or to the generator. Low speed shaft is not required for some drive train options (e.g. integrated bearing type). In \cite{Fingersh2006}, the mass and the cost of the low speed shaft is presented as a function of the turbine diameter.
 
 \begin{equation}
-<<<<<<< HEAD
-	Mass_{low-speed-shaft}(t)= 1.35 \times P(MW)^1.44 
-=======
-	\text{Mass (t)} = 1.35 \times {P_{rated}}^{1.44}
->>>>>>> 80dd2bfeee1a7113922810e61f6285e82e8c3fba
+		\text{Mass (t)} = 1.35 \times {P_{rated(MW)}}^{1.44}
 \end{equation}
 
-\subsectiion{Main Bearing}
+\subsubsection{Main Bearing}
 
-The mass of the main bearing can vary depending on the bearing type. For example, a double-tapered roller bearing for a direct-drive is heavier than a conventional two-point suspension type bearing. To give and idea the mass of a conventional bearing that is connected to a three-stage gearbox can be estimated as \cite{Fingersh2006};
+The mass of the main bearing can vary depending on the bearing type. For example, a double-tapered roller bearing for a direct-drive is heavier than a conventional two-point suspension type bearing. In  \cite{Fingersh2006}, the mass of the main bearing is presented as a function of turbine diameter. Assuming mass of the bearing housing is equal to bearing mass, the mass of the main bearing system can be expressed as a function of the rated power as in \autoref{mass_bearing}.
 
 \begin{equation}
-<<<<<<< HEAD
-	Main-Bearing(kg)=(\frac{R}{75}-0.033)*0.0092*R^2.5
-=======
-	\text{Mass(t)} = 130 \times {P_{rated}}^{1.75}
->>>>>>> 80dd2bfeee1a7113922810e61f6285e82e8c3fba
+	\text{Mass(t)} = 0.26 \times {P_{rated(MW)}}^{1.75}
+  \label{mass_bearing}
 \end{equation}
 
 \subsection{Hydraulic Systems}
 
 \subsection{Generator}
-The generator types covered are induction generator, permanent-magnet generator, synchronous generator and superconducting generator. The cooling method for the generators are also defined (air or water cooled). 
-All these data are combined in an open-source design tool. The user can select different PTO systems, and then define the input power and rotational speed The design tool gives the mass and efficiency of the components. Thus, it is very easy for a user to compare different PTO systems and modify the mechanical models based on these estimations. The design tool is built using Matlab GUI. The aim of the study is to publish it as a web application that is open to wind turbine designers. We aim to expand the toolbox for the reliability calculation of the different PTO systems. The design tool will help the designers to compare different PTO systems and select the most suitable option for the specific application.
+
+The generator types covered are induction generator, permanent-magnet generator, synchronous generator and superconducting generator. The cooling methods for induction and synchronous generators are also defined (air-cooled or water-cooled). 
+
+\subsubsection{Induction Generator}
+
+Induction generators are the most common generator type used in wind turbines. Squirrel cage induction generators are preffered for small wind turbines, where doubly-fed induction generators are preffered for large wind turbines. Mass data for various power rated machines (4-poles) from ABB and Siemens catalogues are collected \cite{ABB2012, Siemens}, which are plotted in \autoref{fig:induction_generator}. Trend lines for Siemens machines show that, the water-cooled induction generators are 18 \% lighter than the air-cooled ones. The mass of generators as a function of the rated power can be expressed as in \autoref{mass-air} and \autoref{mass-water}.
+
+
+\begin{equation}
+  \text{Mass}_{air-cooled}(t) = 3.91 \times {P_{rated(MW)}}^{0.69}
+  \label{mass-air}
+\end{equation}
+
+\begin{equation}
+  \text{Mass}_{water-cooled}(t) = 3.22 \times {P_{rated(MW)}}^{0.68}
+  \label{mass-water}
+\end{equation}
+
+\begin{equation}
+\text{Efficiency (\%)} = 95.64 \times {P_{rated(MW)}}^{0.01}
+\end{equation}
+
 
 <<induction_generator,  fig.cap="Mass of the induction generator vs torque.">>=
 #Plot High Speed Induction Generator
@@ -237,19 +221,6 @@ lines(power_fine, predict(fit, list(Power.MW= power_fine)), lty=2,lwd=2, col="da
 #mtext(paste("Efficiency (%)=",coefficients[1],"xPower(MW)^",coefficients[2], sep=""), 3,-3.5)
 @
 
-\begin{equation}
-  \text{Mass}_{air}(t) = 3.91 \times {P_{rated}}^{0.69}
-\end{equation}
-
-\begin{equation}
-  \text{Mass}_{water}(t) = 3.22 \times {P_{rated}}^{0.68}
-\end{equation}
-
-\begin{equation}
-\text{Efficiency (\%)} = 95.64 \times {P_{rated}}^{0.01}
-\end{equation}
-
-
 
 <<plot1gpm, fig.cap="Mass of the medium speed permanent magnet generator vs torque.">>=
 g1pm_generator <- read.delim("../generator/1GPM-generator-data.txt")
@@ -288,12 +259,15 @@ mtext(bquote(Mass(t) == .(linear_coefficients[2])*Torque (kNm) + .(round(linear_
   \text{Mass(t)} = 0.03 \times {T_{rated}} + 1.5
 \end{equation}
 
-As shonw in \autoref{fig:plot1gpm}
+As shown in \autoref{fig:plot1gpm}
 
 The proceedings for IE 07 will contain all the accepted
 papers following the peer review process. Authors are
 asked to prepare and submit the {\bf PDF} electronic versions
 of their full papers according to the instructions below.
+
+\section{Open Source Tool}
+All these data are combined in an open-source design tool. The user can select different PTO systems, and then define the input power and rotational speed The design tool gives the mass and efficiency of the components. Thus, it is very easy for a user to compare different PTO systems and modify the mechanical models based on these estimations. The design tool is built using Matlab GUI. The aim of the study is to publish it as a web application that is open to wind turbine designers. We aim to expand the toolbox for the reliability calculation of the different PTO systems. The design tool will help the designers to compare different PTO systems and select the most suitable option for the specific application.
 
 \section{Manuscript preparation}
 Full papers must be typed in English. The title of the
