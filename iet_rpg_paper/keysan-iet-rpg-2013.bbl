@@ -15,6 +15,15 @@
 \bibitem{winergy}
 {Winergy: Gearbox Brochure}.
 
+\bibitem{upwind2011}
+{UpWind- Design Limits and Solutions for Very Large Wind Turbines - EU 6th
+  Frame Project}.
+\newblock Technical report, 2011.
+
+\bibitem{ABB2012}
+ABB.
+\newblock {ABB-Technical Note, Wind Power Generators}, 2012.
+
 \bibitem{Christiansen2011}
 S.~Christiansen, T.~Knudsen, and T.~Bak.
 \newblock {Optimal control of a ballast-stabilized floating wind turbine}.
@@ -46,5 +55,9 @@ Latha Sethuraman and Vengatesan Venugopal.
 \newblock {Hydrodynamic response of a stepped-spar floating wind turbine:
   Numerical modelling and tank testing}.
 \newblock {\em Renewable Energy}, 52:160--174, April 2013.
+
+\bibitem{Siemens}
+Siemens.
+\newblock {Siemens Catalogue - Three Phase Induction Motors}, 2012.
 
 \end{thebibliography}

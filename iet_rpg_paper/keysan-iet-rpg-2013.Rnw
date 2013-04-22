@@ -61,7 +61,7 @@ The main power take-off components in a wind turbine can be listed as: bearing, 
 
 \subsubsection{Multi Stage Gearbox}
 
-The most common gearbox type is three-stage gearbox, which increases the turbine speed to approximately 1500 rpm. 
+The most common gearbox type used in wind turbines is the three-stage gearboxes, which increase the turbine speed to approximately 1500 rpm. 
 Data from the following three-stage wind turbine gearbox manufacturers are collected: Bosch-Rexroth\cite{bosch}, Winergy\cite{winergy}, Moventas\cite{Moventas}, Eickhoff\cite{eickhoff}, and General Electric\cite{GE}, and plotted in \autoref{fig:gearbox}. From the figure, it may be seen that the mass of the gearbox is proportional to input torque, which is represented as a linear function in \autoref{3G_gearbox}. 
 
 <<gearbox, fig.cap="Mass of three-stage gearboxes versus torque.">>=
@@ -145,6 +145,7 @@ The generator types covered are induction generator, permanent-magnet generator,
 
 Induction generators are the most common generator type used in wind turbines. Squirrel cage induction generators are preffered for small wind turbines, where doubly-fed induction generators are preffered for large wind turbines. Mass data for various power rated machines (4-poles) from ABB and Siemens catalogues are collected \cite{ABB2012, Siemens}, which are plotted in \autoref{fig:induction_generator}. Trend lines for Siemens machines show that, the water-cooled induction generators are 18 \% lighter than the air-cooled ones. The mass of generators as a function of the rated power can be expressed as in \autoref{mass-air} and \autoref{mass-water}.
 
+Efficiencies of induction generators at rated load are plotted in \autoref{fig:induction_generator_efficiency}. The efficiency does not change with the cooling method, but increases with the power rating (efficiency increases from 96 \% to 97.5 \% as the power rating is increased from 2 MW to 8 MW). 
 
 \begin{equation}
   \text{Mass}_{air-cooled}(t) = 3.91 \times {P_{rated(MW)}}^{0.69}
@@ -194,7 +195,7 @@ lines(power_fine, predict(fit, list(Power.MW= power_fine)), lty=2,lwd=2, col=col
 #mtext(paste("Mass(t)=",coefficients[1],"xPower(MW)^",coefficients[2], sep=""), 1,-6.5)
 @
 
-<<induction_generator_eeficiency,  fig.cap="Mass of the induction generator vs torque.">>=
+<<induction_generator_efficiency,  fig.cap="Efficiency of induction generator at rated load vs power rating.">>=
 
 #Set colors
 colors = brewer.pal(3,"Dark2")
@@ -222,6 +223,32 @@ lines(power_fine, predict(fit, list(Power.MW= power_fine)), lty=2,lwd=2, col="da
 @
 
 
+\subsubsection{Direct-Drive Synchronous Generator}
+
+Electrically excited direct-drive synchronous generators can be used in wind turbines to reduce the raw material cost compared to direct-drive permanent magnet generators. One example is the 7.5 MW, 13 rpm Enercon 126 wind turbine, with a generator mass of 220 tonnes.
+In \cite{upwind2011}, the mass of a direct-drive synchronous generator is estimated with various power ratings. Since, the rotational speed of direct drive generators varies with power rating, it is better to calculate the mass as a function of the input torque as presented in \autoref{eesg_mass}.
+
+\begin{equation}
+  \text{Mass(t)} = 0.035 \times {T_{rated(kNm)}} + 8.9
+  \label{eesg_mass}
+\end{equation}
+
+\subsubsection{Direct-Drive Permanent Magnet Generator}
+
+
+\begin{equation}
+  \text{Mass(t)} = 0.028 \times {T_{rated}} + 2.8
+\end{equation}
+
+
+\subsubsection{Medium Speed Permanent Magnet Generator}
+
+\begin{equation}
+  \text{Mass(t)} = 0.03 \times {T_{rated}} + 1.5
+\end{equation}
+
+As shown in \autoref{fig:plot1gpm}
+
 <<plot1gpm, fig.cap="Mass of the medium speed permanent magnet generator vs torque.">>=
 g1pm_generator <- read.delim("../generator/1GPM-generator-data.txt")
 #Set colors
@@ -233,117 +260,13 @@ plot(g1pm_generator$Torque.kNm, g1pm_generator$Mass.t,pch=21, cex=1.5,
 linear_estimation<-lm(Mass.t ~ Torque.kNm, data=g1pm_generator)
 abline(linear_estimation, col="gray", lwd=2, lty=2)
 # display equation
-linear_coefficients <- round(coef(linear_estimation), 3) 
-mtext(bquote(Mass(t) == .(linear_coefficients[2])*Torque (kNm) + .(round(linear_coefficients[1],1))), adj=1, padj=3, cex=0.8)
+#linear_coefficients <- round(coef(linear_estimation), 3) 
+#mtext(bquote(Mass(t) == .(linear_coefficients[2])*Torque (kNm) + .(round(linear_coefficients[1],1))), adj=1, padj=3, cex=0.8)
 @
 
 
-\subsection{Direct Drive Synchronous Generator}
-
-\begin{equation}
-  \text{Mass(t)} = 0.035 \times {T_{rated}} + 8.9
-\end{equation}
-
-\subsection{Permanent Magnet Generator}
-
-\subsubsection{Direct Drive}
-
-\begin{equation}
-  \text{Mass(t)} = 0.028 \times {T_{rated}} + 2.8
-\end{equation}
-
-
-\subsubsection{Medium Speed}
-
-\begin{equation}
-  \text{Mass(t)} = 0.03 \times {T_{rated}} + 1.5
-\end{equation}
-
-As shown in \autoref{fig:plot1gpm}
-
-The proceedings for IE 07 will contain all the accepted
-papers following the peer review process. Authors are
-asked to prepare and submit the {\bf PDF} electronic versions
-of their full papers according to the instructions below.
-
 \section{Open Source Tool}
 All these data are combined in an open-source design tool. The user can select different PTO systems, and then define the input power and rotational speed The design tool gives the mass and efficiency of the components. Thus, it is very easy for a user to compare different PTO systems and modify the mechanical models based on these estimations. The design tool is built using Matlab GUI. The aim of the study is to publish it as a web application that is open to wind turbine designers. We aim to expand the toolbox for the reliability calculation of the different PTO systems. The design tool will help the designers to compare different PTO systems and select the most suitable option for the specific application.
-
-\section{Manuscript preparation}
-Full papers must be typed in English. The title of the
-paper is typed in CAPITAL LETTERS (boldface 18pt)
-and centred on the page. The author's name is typed in
-capital and lower case bold letters and centred on the
-page. Directly under the author's name in capital and
-lower case letters and also centred is the author's
-affiliation, address, plus e-mail address and fax number of
-(at least) the corresponding author. Manuscripts must be
-typed single spaced using 10 point characters. Only
-Times, Times Roman, Times New Roman and Symbol
-fonts are accepted. The text should be typed on an A4
-paper (21 cm x 29.7 cm). The paper should have margins
-of 2.4 cm from top and bottom and 2 cm from left and
-right. Paragraphs are separated by 6 points and with no
-indentation. The text of the full papers is written in two
-columns and justified. Each column has a width of 8.3 cm
-and the columns are separated by a margin of 0.4 cm. The
-maximum length of the full paper is 8 pages, of the short
-and the demo paper 4 pages. Do not number the pages.
-The final format in which the papers will appear on the
-CD ROM will be a PDF file. Authors are requested to send
-a PDF file of their final paper to be included directly
-in the CD ROM.
-
-\subsection{Figures and tables}
-Figures and tables should be centred in the column,
-numbered consecutively throughout the text, and each
-should have a caption underneath it (see for example
-Table~\ref{tab1}). Care should be taken that the lettering
-is not too small. All figures and tables should be included
-in the electronic versions of the full paper.
-
-
-\begin{table}[htb!]
-\begin{center}
-
-\begin{tabular}{|l|l|}
-\hline
-{\em n} & {\em n!} \\
-\hline
-1 & 1  \\
-2 & 2  \\
-3  & 6\\
-\hline
-\end{tabular}
-\end{center}
-\caption{\label{tab1}This is an example of a table caption.}
-\end{table}
-
-\subsubsection{Equations}
-Equations should be typed within the text, centred, and
-should be numbered consecutively throughout the text.
-They should be referred to in the text as Equation (n).
-Their numbers should be typed in parentheses, flush right,
-as in the following example.
-\begin{equation}
-	    PA + A'P - PBR^{-1}B'P + Q  =  0 \enspace.
-\end{equation}
-
-\subsubsection{References}
-The list of references should be ordered alphabetically
-according to the first author surname. All references
-should be cited in the text, and using square brackets such
-as \cite{ref01} and \cite{ref02}.
-
-\section{Generating a {PDF} file}
-The PDF format will be the final format under which the
-papers will appear in the {CD ROM}. You {\bf SHOULD}
-submit your paper as {PDF} document.
-
-\section{Electronic submission of the full paper}
-You should submit your {PDF} file which should adhere to
-the above format via the conference paper submission
-system.
 
 \section*{Acknowledgements}
 The acknowledgement for funding organisations etc.
