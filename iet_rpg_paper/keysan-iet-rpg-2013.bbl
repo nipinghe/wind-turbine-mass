@@ -1,14 +1,50 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
-\bibitem{ref01}
-A.~B. Author and C.~D. Author.
-\newblock {Title of the Article}.
-\newblock {\em {The Journal}}, 2006.
+\bibitem{bosch}
+{Bosch Rexroth - Main Gearboxes for Wind Turbines}.
 
-\bibitem{ref02}
-E.~Author and F.~Author.
-\newblock {Title of the Paper}.
-\newblock In {\em {International Conference on Something}}, Place (Country),
-  2007.
+\bibitem{eickhoff}
+{Eickhoff Wind Turbine Gearboxes}.
+
+\bibitem{Moventas}
+{FusionDrive-Wind Gears}.
+
+\bibitem{GE}
+{GE Drivetrain Technologies Gearbox Systems}.
+
+\bibitem{winergy}
+{Winergy: Gearbox Brochure}.
+
+\bibitem{Christiansen2011}
+S.~Christiansen, T.~Knudsen, and T.~Bak.
+\newblock {Optimal control of a ballast-stabilized floating wind turbine}.
+\newblock In {\em 2011 IEEE International Symposium on Computer-Aided Control
+  System Design (CACSD)}, pages 1214--1219. IEEE, September 2011.
+
+\bibitem{Cotrell2002}
+J~Cotrell.
+\newblock {A Preliminary Evaluation of a Multiple-Generator Drivetrain
+  Configuration for Wind Turbines Preprint}.
+\newblock In {\em American Society of Mechanical Engineers (ASME) Wind Energy
+  Symposium}, number January, 2002.
+
+\bibitem{Fingersh2006}
+L~Fingersh, M~Hand, and A~Laxson.
+\newblock {Wind Turbine Design Cost and Scaling Model Wind Turbine Design Cost
+  and Scaling Model}.
+\newblock Technical Report December, 2006.
+
+\bibitem{Matveev2011}
+Alexey Matveev, Sigurd Ovrebo, Robert Nilssen, and Arne Nysveen.
+\newblock {State of the art in generator technology for offshore wind energy
+  conversion systems}.
+\newblock In {\em 2011 IEEE International Electric Machines - Drives Conference
+  (IEMDC)}, pages 1131--1136. IEEE, May 2011.
+
+\bibitem{Sethuraman2013}
+Latha Sethuraman and Vengatesan Venugopal.
+\newblock {Hydrodynamic response of a stepped-spar floating wind turbine:
+  Numerical modelling and tank testing}.
+\newblock {\em Renewable Energy}, 52:160--174, April 2013.
 
 \end{thebibliography}
