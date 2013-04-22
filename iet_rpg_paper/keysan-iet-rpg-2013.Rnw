@@ -225,8 +225,8 @@ lines(power_fine, predict(fit, list(Power.MW= power_fine)), lty=2,lwd=2, col="da
 
 \subsubsection{Direct-Drive Synchronous Generator}
 
-Electrically excited direct-drive synchronous generators can be used in wind turbines to reduce the raw material cost compared to direct-drive permanent magnet generators. One example is the 7.5 MW, 13 rpm Enercon 126 wind turbine, with a generator mass of 220 tonnes.
-In \cite{upwind2011}, the mass of a direct-drive synchronous generator is estimated with various power ratings. Since, the rotational speed of direct drive generators varies with power rating, it is better to calculate the mass as a function of the input torque as presented in \autoref{eesg_mass}.
+Electrically excited direct-drive synchronous generators can be used in wind turbines to reduce the raw material cost compared to direct-drive permanent magnet generators. One example is the 7.5 MW, 13 rpm Enercon 126 wind turbine, with a generator mass of 220 t.
+In \cite{upwind2011}, various direct-drive synchronous generator designs are presented from 0.75 MW to 10 MW. It is better to calculate the mass of direct-drive generators as a function of the input torque, since the rotational speed changes with power rating. The linear equation that represents the mass of a direct-drive synchronous generator is given in \autoref{eesg_mass}.
 
 \begin{equation}
   \text{Mass(t)} = 0.035 \times {T_{rated(kNm)}} + 8.9
@@ -235,9 +235,11 @@ In \cite{upwind2011}, the mass of a direct-drive synchronous generator is estima
 
 \subsubsection{Direct-Drive Permanent Magnet Generator}
 
+Direct-drive permanent magnet generators have higher torque densities than electrically excited synchronous machines. Some notable direct-drive permanent magnet generators are: Harakosan (1.5 MW, 18 rpm, 47.2 t), The Switch (3.8 MW, 21 rpm, 81 t) \cite{Duan2009}. In \cite{Bang2008,upwind2011} many other permanent-magnet designs are presented. There are a few other designs to reduce the mass of PM machines, transverse-flux machine is being one of them as presented in \cite{Bang2009}. However, radial flux permanent magnet machine is the most common topology, and therefore it is used for mass estimation as presented in \autoref{mass_ddpm}.
 
 \begin{equation}
   \text{Mass(t)} = 0.028 \times {T_{rated}} + 2.8
+  \label{mass_ddpm}
 \end{equation}
 
 

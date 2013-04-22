@@ -24,6 +24,19 @@
 ABB.
 \newblock {ABB-Technical Note, Wind Power Generators}, 2012.
 
+\bibitem{Bang2008}
+D.~Bang, H.~Polinder, G.~Shrestha, and Jan~Abraham Ferreira.
+\newblock {Review of Generator Systems for Direct-Drive Wind Turbines}.
+\newblock In {\em Proceedings of the 2008 European wind energy conference,
+  EWEC-2008}, pages 1--10, Brussels, 2008.
+
+\bibitem{Bang2009}
+Deok-je Bang, H.~Polinder, Ghanshyam Shrestha, and Jan~Abraham Ferreira.
+\newblock {Ring-shaped transverse flux PM generator for large direct-drive wind
+  turbines}.
+\newblock In {\em 2009 International Conference on Power Electronics and Drive
+  Systems (PEDS)}, pages 61--66. IEEE, November 2009.
+
 \bibitem{Christiansen2011}
 S.~Christiansen, T.~Knudsen, and T.~Bak.
 \newblock {Optimal control of a ballast-stabilized floating wind turbine}.
@@ -37,11 +50,23 @@ J~Cotrell.
 \newblock In {\em American Society of Mechanical Engineers (ASME) Wind Energy
   Symposium}, number January, 2002.
 
+\bibitem{Duan2009}
+Yao Duan and Ronald~G. Harley.
+\newblock {Present and future trends in wind turbine generator designs}.
+\newblock {\em 2009 IEEE Power Electronics and Machines in Wind Applications},
+  pages 1--6, June 2009.
+
 \bibitem{Fingersh2006}
 L~Fingersh, M~Hand, and A~Laxson.
 \newblock {Wind Turbine Design Cost and Scaling Model Wind Turbine Design Cost
   and Scaling Model}.
 \newblock Technical Report December, 2006.
+
+\bibitem{Hau2005a}
+Erich Hau.
+\newblock {\em {Wind Turbines: Fundamentals, Technologies, Application,
+  Economics}}.
+\newblock Springer, 2005.
 
 \bibitem{Matveev2011}
 Alexey Matveev, Sigurd Ovrebo, Robert Nilssen, and Arne Nysveen.
@@ -59,5 +84,12 @@ Latha Sethuraman and Vengatesan Venugopal.
 \bibitem{Siemens}
 Siemens.
 \newblock {Siemens Catalogue - Three Phase Induction Motors}, 2012.
+
+\bibitem{Zhang2011a}
+Zhaoqiang Zhang, Alexey Matveev, Sigurd \O~vreb\o, Robert Nilssen, Arne
+  Nysveen, and Robin Rigg.
+\newblock {State of the Art in Generator Technology for Offshore Wind Energy
+  Conversion Systems}.
+\newblock In {\em IEMDC-11}, pages 1147--1152, 2011.
 
 \end{thebibliography}
