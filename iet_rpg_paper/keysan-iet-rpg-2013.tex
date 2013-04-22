@@ -5,6 +5,7 @@
 
 
 
+
 \usepackage{Sweave}
 \begin{document}
 
@@ -49,6 +50,8 @@ The mass of a three-stage gearbox can be expressed in terms of the input torque 
 \begin{Schunk}
 \begin{Sinput}
 > #Plot Gearbox data
+> require("knitr")
+> require("RColorBrewer", quietly=TRUE)
 > gearbox <- read.delim("../gearbox/gearbox_data.txt")
 > colors = brewer.pal(4,"Dark2")
 > plot(gearbox$Torque.kNm, gearbox$Weight.kg/1000, pch=as.numeric(gearbox$Manufacturer)+21, 
