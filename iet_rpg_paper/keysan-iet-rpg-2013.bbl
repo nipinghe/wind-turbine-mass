@@ -2,18 +2,26 @@
 
 \bibitem{bosch}
 {Bosch Rexroth - Main Gearboxes for Wind Turbines}.
+\newblock
+  \url{http://www.boschrexroth.com/mobile-hydraulics-catalog/Vornavigation/Vornavi.cfm?Language=EN\&VHist=g61480\&PageID=m3844}.
 
 \bibitem{eickhoff}
 {Eickhoff Wind Turbine Gearboxes}.
+\newblock \url{http://www.eickhoff-bochum.de/en/download/index.php}.
 
 \bibitem{Moventas}
 {FusionDrive-Wind Gears}.
+\newblock
+  \url{http://www.moventas.com/what-we-do/wind-gears/products/fusiondrive-r}.
 
 \bibitem{GE}
 {GE Drivetrain Technologies Gearbox Systems}.
+\newblock \url{http://gedrivetrain.com/gearboxSystems.cfm}.
 
 \bibitem{winergy}
 {Winergy: Gearbox Brochure}.
+\newblock
+  \url{http://www.winergy-group.com/cms/website.php?id=/en/downloads.htm}.
 
 \bibitem{upwind2011}
 {UpWind- Design Limits and Solutions for Very Large Wind Turbines - EU 6th
@@ -22,7 +30,13 @@
 
 \bibitem{ABB2012}
 ABB.
-\newblock {ABB-Technical Note, Wind Power Generators}, 2012.
+\newblock {Product note, Wind power generators, Medium speed permanent magnet
+  generator}.
+\newblock Technical report, 2012.
+
+\bibitem{ABB2012a}
+ABB.
+\newblock {Technical Note, Wind Power Generators}, 2012.
 
 \bibitem{Bang2008}
 D.~Bang, H.~Polinder, G.~Shrestha, and Jan~Abraham Ferreira.
@@ -62,11 +76,22 @@ L~Fingersh, M~Hand, and A~Laxson.
   and Scaling Model}.
 \newblock Technical Report December, 2006.
 
+\bibitem{Hagglunds2012}
+H\"{a}gglunds.
+\newblock {Marathon hydraulic motors}.
+\newblock Technical report, 2012.
+
 \bibitem{Hau2005a}
 Erich Hau.
 \newblock {\em {Wind Turbines: Fundamentals, Technologies, Application,
   Economics}}.
 \newblock Springer, 2005.
+
+\bibitem{Keysan2011b}
+Ozan Keysan and Markus~A. Mueller.
+\newblock {A Homopolar HTSG Topology for Large Direct-Drive Wind Turbines}.
+\newblock {\em IEEE Transactions on Applied Superconductivity},
+  21(5):3523--3531, October 2011.
 
 \bibitem{Matveev2011}
 Alexey Matveev, Sigurd Ovrebo, Robert Nilssen, and Arne Nysveen.
@@ -83,7 +108,10 @@ Latha Sethuraman and Vengatesan Venugopal.
 
 \bibitem{Siemens}
 Siemens.
-\newblock {Siemens Catalogue - Three Phase Induction Motors}, 2012.
+\newblock {Siemens Catalogue - Three Phase Induction Motors}.
+\newblock
+  \url{http://www.swe.siemens.com/spain/web/es/industry/drive\_tech/Documents/Catalogo
+  de motores H Compact-HCompact Plus.pdf}, 2012.
 
 \bibitem{Zhang2011a}
 Zhaoqiang Zhang, Alexey Matveev, Sigurd \O~vreb\o, Robert Nilssen, Arne
