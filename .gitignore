@@ -1,12 +1,9 @@
 # History files
 .Rhistory
-
 # Example code in package build process
 *-Ex.R
 .Rproj.user
-
 #Latex files
 *-concordance.tex
 *.log
-*.pdf
 *.synctex.gz
