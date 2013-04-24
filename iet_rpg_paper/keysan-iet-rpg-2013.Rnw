@@ -42,13 +42,13 @@ Wind turbine, mass estimation, direct-drive, gearbox, generator, offshore
 
 \abstract
 
-This paper presents mass and efficiency estimations for wind turbine drive-train components. Data from literature and commercial catalogues are collected to obtain trend lines for each component. Different gearbox and generator types are investigated as well as bearing and low-speed shaft. An open-source tool is presented to compare different power take-off options in terms of weight and efficiency. The datasets and the user interface made available as open source tool and can be accessed at GitHub.
+This paper presents mass and efficiency estimations for wind turbine drive-train components. Data from literature and commercial catalogues are collected to obtain trend lines for each component. Different gearbox and generator types are investigated as well as the bearing and the low-speed shaft. An open-source tool is presented to compare different power take-off options in terms of weight and efficiency. The datasets and the user interface made available as an open source tool and can be accessed at GitHub.
 
 \section{Introduction}
 
-Far offshore wind turbines can help to exploit the wind energy resources that remained untapped so far. These turbines are planned to be installed as floating platforms due to  high water depths (\textgreater 40 m). Reliability and mechanical stability are the two most important issues for floating wind turbines. In particular, the nacelle mass is critical for the mechanical stability \cite{Christiansen2011, Sethuraman2013}. A higher mass on the top of the tower increases the center of mass significantly, and this should be balanced with a larger ballast, which increases the installation cost. 
+Far offshore wind turbines can help to exploit the wind energy resources that remained untapped so far. These turbines are planned to be installed as floating platforms due to  high water depths (\textgreater 40 m). Reliability and mechanical stability are the two most important issues for floating wind turbines. In particular, the nacelle mass is critical for the mechanical stability \cite{Christiansen2011, Sethuraman2013}. A higher tower head-mass increases the centre of mass significantly, and this should be balanced with a larger ballast, which increases the installation cost. 
 
-Although, doubly-fed induction generator coupled to a multi-stage gearbox is the most common power take-off (PTO) type for onshore wind turbines; it may not be the most suitable option for large offshore wind turbines. A direct-drive PTO systems can be used to eliminate the gearbox, but the mass of a direct-drive generator can be larger than a high-speed PTO system depending on the power rating and diameter.
+Although, doubly-fed induction generator coupled to a multi-stage gearbox is the most common power take-off (PTO) type for onshore wind turbines; it may not be the most suitable option for large offshore wind turbines. A direct-drive PTO system can be used to eliminate the gearbox, but the mass of a direct-drive generator can be larger than a high-speed PTO system depending on the power rating and the diameter.
 
 In this study, data from manufacturers and literature are collected to predict the  mass and efficiency trend lines for wind turbine drive-train components. These equations are then used to build an open-source tool that can estimate the mass and efficiency of the total PTO system. Readers can access to datasets and modify the models using the tools defined in \autoref{access}.
 
@@ -91,7 +91,7 @@ linear_coefficients <- round(coef(linear_estimation), 3)
 \label{3G_gearbox}
 \end{equation}
 
-Multi-stage gearboxes usually consist of two planetary gear stages and an additional high-speed parallel-shaft helical gear stage. In \cite{Hau2005a} it is stated that each planetary gear stages have 1 \% power loss and each helical gear stages have 2 \% power loss. Thus, the efficiency of a three-stage gearbox can be represented as in \autoref{3G_efficiency} \cite{Zhang2011a}. The equation implies that the efficiency of a three-stage gearbox varies from 97 \% at no load to 96 \% at full load.
+Multi-stage gearboxes usually consist of two planetary gear stages and an additional high-speed parallel-shaft helical gear stage. In \cite{Hau2005a} it is stated that each planetary gear stages have 1 \% power loss and each helical gear stages have 2 \% power loss. Thus, the efficiency of a three-stage gearbox can be approximated as in \autoref{3G_efficiency} \cite{Zhang2011a}. The equation implies that the efficiency of a three-stage gearbox varies from 97 \% at no load to 96 \% at full load.
 
 \begin{equation}
   \text{Efficiency(\%)} = 97.0 - \dfrac{P_{in}}{P_{rated}}
@@ -100,7 +100,7 @@ Multi-stage gearboxes usually consist of two planetary gear stages and an additi
 
 \subsubsection{Single Stage Gearbox}
 
-Gear ratios up to 15:1 can be achieved using a single stage gearbox \cite{Cotrell2002}. Single-stage gearboxes usually consist of a planetary stage with various numbers of gears depending on the power rating. Single stage gearboxes have fewer gears and bearings than high-speed gearboxes, which increases the reliability. Moreover, their efficiencies are higher than multi-stage gearboxes. In \cite{Matveev2011}, the efficiency of a single stage gearbox is given as:
+Gear ratios up to 15:1 can be achieved using a single stage gearbox \cite{Cotrell2002}. Single-stage gearboxes usually consist of a planetary stage with varying number of gears depending on the power rating. Single stage gearboxes have fewer gears and bearings than the multi-stage gearboxes, which increases the reliability. Moreover, their efficiencies are higher. In \cite{Matveev2011}, the efficiency of a single stage gearbox is given as:
 
 \begin{equation}
   \text{Efficiency(\%)} = 99.5 - \dfrac{P_{in}}{P_{rated}}
@@ -109,7 +109,7 @@ Gear ratios up to 15:1 can be achieved using a single stage gearbox \cite{Cotrel
 Mass of a single-stage gearbox coupled with medium-speed generator can be approximated as in \autoref{mass_1g}  \cite{Fingersh2006}. 
 
 \begin{equation}
-	\text{Mass(t)} = 88.3 \times {T_{in(kNm)}}^{0.774}
+	\text{Mass(t)} = 0.088 \times {T_{in(kNm)}}^{0.774}
   \label{mass_1g}
 \end{equation}
 
@@ -117,7 +117,7 @@ Mass of a single-stage gearbox coupled with medium-speed generator can be approx
 \subsection{Structural Components}
 
 \subsubsection{Low Speed Shaft}
-Low speed shaft is not a critical component; it connects the main hub to the gearbox or to the generator. Low speed shaft is not required for some drive train options (e.g. integrated bearing type). In \cite{Fingersh2006}, the mass and the cost of the low speed shaft is presented as a function of the turbine diameter. This equation can be modified as a function of the rated power as:
+Low speed shaft connects the main hub to the gearbox or to the generator. Low speed shaft is not required for some drive train options (e.g. integrated bearing type). In \cite{Fingersh2006}, the mass and the cost of the low speed shaft is presented as a function of the turbine diameter. This equation can be modified as a function of the rated power as:
 
 \begin{equation}
 		\text{Mass (t)} = 1.35 \times {P_{rated(MW)}}^{1.44}
@@ -125,7 +125,7 @@ Low speed shaft is not a critical component; it connects the main hub to the gea
 
 \subsubsection{Main Bearing}
 
-The mass of the main bearing can vary depending on the bearing type. For example, a double-tapered roller bearing for a direct-drive is heavier than a conventional two-point suspension type bearing. In  \cite{Fingersh2006}, the mass of the main bearing is presented as a function of turbine diameter. Assuming mass of the bearing housing is equal to bearing mass, the mass of the main bearing system can be expressed as a function of the rated power as in \autoref{mass_bearing}.
+The mass of the main bearing can vary depending on the bearing type. For example, a double-tapered roller bearing for a direct-drive is heavier than a conventional two-point suspension type bearing. In  \cite{Fingersh2006}, the mass of the main bearing is presented as a function of turbine diameter. Assuming the mass of the bearing housing is equal to the bearing mass, the total mass of the main bearing system can be expressed as a function of the rated power as in \autoref{mass_bearing}.
 
 \begin{equation}
 	\text{Mass(t)} = 0.26 \times {P_{rated(MW)}}^{1.75}
@@ -134,11 +134,11 @@ The mass of the main bearing can vary depending on the bearing type. For example
 
 \subsection{Generator}
 
-The generator types covered in this section are induction generator, permanent-magnet generator, synchronous generator, and superconducting generator. The cooling methods(air-cooled or water-cooled) for induction and synchronous generators are also included in estimations. 
+The generator types covered in this section are induction generators, permanent-magnet generators, synchronous generators, and superconducting generators. The cooling methods(air-cooled or water-cooled) for induction and synchronous generators are also included in the estimations. 
 
 \subsubsection{Induction Generator}
 
-Induction generator is the most common generator type used in wind turbines. Squirrel cage induction generators are prefered for small wind turbines, where doubly-fed induction generators are prefered for large wind turbines. Mass data for various 4-pole machines from ABB and Siemens catalogues are collected \cite{ABB2012a, Siemens}, which are plotted in \autoref{fig:induction_generator}. Trend lines for Siemens machines show that, the water-cooled induction generators are 18 \% lighter than the air-cooled machines. The mass of the induction generator as a function of the rated power can be expressed as in \autoref{mass-air} and \autoref{mass-water}.
+Induction generator is the most common generator type used in wind turbines. Squirrel cage induction generators are preferred for small wind turbines, where doubly-fed induction generators are preferred for large wind turbines. Mass data for various 4-pole machines from ABB and Siemens catalogues are collected \cite{ABB2012a, Siemens}, which are plotted in \autoref{fig:induction_generator}. Trend lines for Siemens machines show that, the water-cooled induction generators are 18 \% lighter than the air-cooled machines. The mass of the induction generator as a function of the rated power can be expressed as in \autoref{mass-air} and \autoref{mass-water}.
 
 Efficiencies of induction generators at rated load are plotted in \autoref{fig:induction_generator_efficiency}. The efficiency does not change with the cooling method, but increases with the power rating (efficiency increases from 96 \% to 97.5 \% as the power rating is increased from 2 MW to 8 MW). 
 
@@ -220,8 +220,8 @@ lines(power_fine, predict(fit, list(Power.MW= power_fine)), lty=2,lwd=2, col="da
 
 \subsubsection{Direct-Drive Synchronous Generator}
 
-Electrically excited direct-drive synchronous generators can be used in wind turbines to reduce the raw material cost compared to direct-drive permanent magnet generators. One example of sucha a machine is the 7.5 MW, 13 rpm Enercon 126 wind turbine, which has a generator mass of 220 t.
-In \cite{upwind2011}, various direct-drive synchronous generator designs are presented from 0.75 MW to 10 MW. It is better to calculate the mass of direct-drive generators as a function of the input torque, since the rotational speed changes with power rating. The linear equation that represents the mass of a direct-drive synchronous generator is given in \autoref{eesg_mass}.
+Electrically excited direct-drive synchronous generators can be used in wind turbines to reduce the raw material cost compared to direct-drive permanent magnet generators. One example of such a machine is the 7.5 MW, 13 rpm Enercon 126 wind turbine, which has a generator mass of 220 t.
+In \cite{upwind2011}, various direct-drive synchronous generator designs are presented from 0.75 MW to 10 MW. For direct-drive machines, it is better to calculate the mass as a function of the input torque, since the rotational speed varies with power rating. The linear equation that represents the mass of a direct-drive synchronous generator is given in \autoref{eesg_mass}.
 
 \begin{equation}
   \text{Mass(t)} = 0.035 \times {T_{rated(kNm)}} + 8.9
@@ -230,7 +230,7 @@ In \cite{upwind2011}, various direct-drive synchronous generator designs are pre
 
 \subsubsection{Direct-Drive Permanent Magnet Generator}
 
-Direct-drive permanent magnet generators have higher torque densities than electrically excited synchronous machines. Some notable direct-drive permanent magnet generators are: Harakosan (1.5 MW, 18 rpm, 47.2 t), The Switch (3.8 MW, 21 rpm, 81 t) \cite{Duan2009}. In \cite{Bang2008,upwind2011} many other permanent-magnet designs are presented. There are a few other designs to reduce the mass of PM machines, transverse-flux machine is being one of them, as presented in \cite{Bang2009}. However, radial flux permanent magnet machine is the most common topology, and therefore it is used for mass estimation in this section, which is given in \autoref{mass_ddpm}.
+Direct-drive permanent magnet generators have higher torque densities than electrically excited synchronous machines. Some notable direct-drive permanent magnet generators are: Harakosan (1.5 MW, 18 rpm, 47.2 t), The Switch (3.8 MW, 21 rpm, 81 t) \cite{Duan2009}. In \cite{Bang2008,upwind2011} many other permanent-magnet designs are presented. There are alternative designs to reduce the mass of PM machines, transverse-flux machine is being one of them, as presented in \cite{Bang2009}. However, radial flux permanent magnet machine is the most common topology, and therefore it is used for mass estimation in this section, which is given in \autoref{mass_ddpm}.
 
 \begin{equation}
   \text{Mass(t)} = 0.028 \times {T_{rated(kNm)}} + 2.8
@@ -239,7 +239,7 @@ Direct-drive permanent magnet generators have higher torque densities than elect
 
 \subsubsection{Medium Speed Permanent Magnet Generator}
 
-Permanent magnet generators can be coupled to single stage gearboxes to reduce the generator cost. They can can be coupled to the gearbox to reduce the number of bearings, or can be semi-integrated for easy replacement. Data from ABB catalogues \cite{ABB2012} and Upwind project are collected and mass versus input torque graph is plotted in \autoref{fig:plot1gpm}. The equation of the trend line is shown in \autoref{mass_1gpm}. 
+Permanent magnet generators can be coupled to single stage gearboxes to reduce the generator cost. They can can be fully-integrated to the gearbox to reduce the number of bearings, or can be semi-integrated for easy replacement. Data from ABB catalogues \cite{ABB2012} and Upwind project are collected and mass versus input torque graph is plotted in \autoref{fig:plot1gpm}. The equation of the trend line is shown in \autoref{mass_1gpm}. 
 
 \begin{equation}
   \text{Mass(t)} = 0.031 \times {T_{rated(kNm)}} + 2.2
@@ -275,7 +275,7 @@ legend(800,15, legend=levels(g1pm_generator$Manufacturer), col=colors,pch=21:22,
 
 \subsection{Other Alternatives}
 
-Hydraulic transmission is another option to increase the rotational speed of the turbine. Although, the efficiency of the hydraulic motors are low (especially at partial load), they can offer high torque densities. It is also possible to control hydraulic system in a way that, the electrical generator can be run at constant speed and can be directly connected to the grid. Data from H\"{o}ganas-Marathon catalogues are collected for high-torque applications \cite{Hagglunds2012} and the trend line is presented in \autoref{mass_hydraulic}. Note that, equation presents the mass of a hydraulic pump. The drive train also requires a hydraulic motor, accumulators and an electrical generator.
+Hydraulic transmission is another option to increase the rotational speed of the turbine. Although, the efficiency of the hydraulic motors are low (especially at partial load), they can offer high torque densities. It is also possible to control hydraulic system in a way that, the electrical generator can be run at constant speed and can be directly connected to the grid. Data from H\"{o}ganas-Marathon catalogues are collected for high-torque applications \cite{Hagglunds2012} and the trend line is presented in \autoref{mass_hydraulic}. Note that, equation presents the mass of the hydraulic pump. The drive-train also requires a hydraulic motor, accumulators and an electrical generator.
 
 \begin{equation}
   \text{Mass(t)} = 0.0042 \times {T_{rated(kNm)}} + 2.7
@@ -292,7 +292,7 @@ Another novel concept is direct-drive superconducting generator, which can offer
 
 \section{Open Source Tool}
 \label{access}
-All equations presented in this study are combined in an open-source design tool, in which the user can select different PTO systems, and then define the input power and rotational speed. The design tool estimates the mass and efficiency of the PTO system. The design tool, which the screenshot is presented in \autoref{screenshot}, is currently built using Matlab GUI. It is planned to publish the design tool as a web application to remove sofrtware restrictions. 
+All the equations presented in this study are combined in an open-source design tool, in which the user can select different PTO systems, and then define the input power and the rotational speed. The design tool estimates the mass and efficiency of the PTO system. The design tool, which the screen-shot is presented in \autoref{screenshot}, is currently built using Matlab GUI. It is planned to publish the design tool as a web application to remove software restrictions. 
 
 \begin{figure}[t]
   \centering
@@ -303,21 +303,20 @@ All equations presented in this study are combined in an open-source design tool
 
 \subsection{Accessing to Data and GUI}
 
-All the datasets, graphs presented in this study can be accessed from the GitHub repository: 
+All the datasets, graphs presented in this study are made available as open-source and can be accessed from the following GitHub repository: 
 
 \begin{itemize}
   \item \url{http://github.com/ozank/wind-turbine-mass}
 \end{itemize}
 
-The readers are encouraged to add any available data to repository or modify the equations to have a better accuracy.
+The readers are encouraged to add any available data to repository or modify the equations to improve the accuracy of the models.
 
 \section{Conclusions}
 
-In this study, the components of wind turbine drive-train are investigated in terms of mass and efficiency. A user interface is developed to help designers to compare different PTO systems.  The tool only covers the bearings, gearbox and generator. It is planned to include the turbine, hub, nacelle and power electronics in the future. All the work presented in this study is shared as an open-source tool and readers are encouraged to add extra information and modify the design tool.
+In this study, the components of a wind turbine drive-train are investigated in terms of mass and efficiency. A user interface is developed to help designers to compare different PTO systems.  Currently, the design tool only covers the bearings, gearbox and generator. It is planned to include the turbine, hub, nacelle and power electronics in the future. All the work presented in this study is shared as an open-source tool and readers are encouraged to add extra information and modify the design tool.
 
 \section*{Acknowledgements}
-This work is supported by the FP7 project MARINA PLATFORM (Grant
-agreement number 241402). 
+This work is supported by the FP7 project MARINA PLATFORM (Grant agreement number 241402). 
 
 \bibliographystyle{plain}
 \bibliography{IET_RPG_2013}
