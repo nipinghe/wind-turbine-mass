@@ -1,0 +1,25 @@
+Total Nacelle Mass
+
+http://cfd.mae.cornell.edu/~caughey/WindPower_09/Presentations/Lyons.pdf
+
+Manufacturer	Power(MW)	Nacelle+Rotor(t)	Generator
+Enercon		4.5		440			EESG
+Enercon		6		440			EESG
+Vestas		3		108			DFIG
+Vestas		4.2		214			DFIG
+Vestas		4.5		214			DFIG
+GE			3.6		265			DFIG
+GE			3.6		280			DFIG
+Siemens		3.6		200			Induction
+RePower		5		400			DFIG
+Prokon (Multibrid)5		280			PMSYN
+
+
+
+
+http://www.ew.tu-darmstadt.de/media/ew/vorlesungen_4/vorlesunggrogeneratorenundhochleistungsantriebe/folie_gghl_6.pdf
+Manufacturer	Power(MW)	Gearbox	Generator	Nacelle	Nacelle+Rotor
+Sudwind		1.5		14		7		61		84
+Repower		5		65(Shaft+bearing:35)	240		350
+Enercon		4.5		-						500
+Multibrid		5						130		230

@@ -1,0 +1,12 @@
+Bosch Rexroth - Hagglunds Marathon
+http://hagglunds.us
+http://194.71.8.21/Upload/20060809110911A_en395.pdf
+http://hagglunds.us/Upload/20060809110911A_en395.pdf
+
+Model		Speed(rpm)	Power(kW) Weight(kg)
+MB800		18	515	2805
+MB1150	38	1031	4600
+MB1600	28	1031	4600
+MB2400	16	1546	6460
+MB3200	10	1580	8930
+MB4000	8	1580	10750

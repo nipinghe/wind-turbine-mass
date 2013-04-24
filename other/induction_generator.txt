@@ -1,0 +1,23 @@
+ABB
+http://www05.abb.com/global/scot/scot234.nsf/veritydisplay/ec43abaa416462cac125784f003802bf/$file/ABB%20brochure%209AKK105233%20EN%2005-2010%20low%20res.pdf
+
+Power(MW)	Voltage	Speed(rpm)	Weight(kg)	Dimensions(m)
+2.1		690		1750		6700		L3.1xW1.6xH1.85
+
+
+
+ABB motor frame sizes
+http://www05.abb.com/global/scot/scot234.nsf/veritydisplay/9ea1742a317b2389c125784f0038036b/$file/Technical%20Note%20One%20platforms%20LR.pdf
+
+Frame Size	Power(MW)	Weight(t) Dimensions(m)
+500		3		5-7		2.5 x 1.7 x 1.8
+560		4		7-10		3 x 2.1 x 1.9
+630		5.5		>11		3.2 x 2.3 x 2
+710		7		>15		3.7 x 2.4 x 2.3			
+
+ABB AMK500L4A BAYH
+2 MW 5700 kg
+
+www.carybus.com/TechnicalDataof15MWatt.pdf
+Power		Mass
+1.56 MW 	7200 kg
