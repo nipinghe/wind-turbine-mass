@@ -95,14 +95,14 @@ initialize_gui(hObject, handles, false);
 % create an axes that spans the whole gui
 %ah = axes('unit', 'normalized', 'position', [0.6 0.5 0.35 0.4]); 
 % import the background image and show it on the axes
-%bg = imread('./images/DFIG_3G.png'); imagesc(bg);
+%bg = imread(fullfile(fileparts(which('marina_gui.m')), 'images', 'DFIG_3G.png')); imagesc(bg);
 % prevent plotting over the background and turn the axis off
 %set(ah,'handlevisibility','off','visible','off')
 % making sure the background is behind all the other uicontrols
 %uistack(ah, 'bottom');
 
 axes(handles.ViewBox1);
-image1=imread('./images/DFIG_3G.png');
+image1=imread(fullfile(fileparts(which('marina_gui.m')), 'images', 'DFIG_3G.png'));
 image(image1);
 axis off;
 axis image;
@@ -301,7 +301,7 @@ handles.val.speed=str2double(get(handles.speed, 'String'));
 
 %update image
 axes(handles.ViewBox1);
-image1=imread('./images/DFIG_3G.png');
+image1=imread(fullfile(fileparts(which('marina_gui.m')), 'images', 'DFIG_3G.png'));
 image(image1);
 axis off;
 axis image;
@@ -462,8 +462,8 @@ switch get(eventdata.NewValue,'Tag') % Get Tag of selected object.
         handles.val.gearbox='multi_stage';
         
         %update image
-        image1=imread('./images/DFIG_3G.png');
- 
+        image1=imread(fullfile(fileparts(which('marina_gui.m')), 'images', 'DFIG_3G.png'));
+        
     case 'PMG'
         handles.val.generator='PMG';
         %Modify Gearbox Options
@@ -479,8 +479,8 @@ switch get(eventdata.NewValue,'Tag') % Get Tag of selected object.
         set(handles.DD, 'Value', 1);            
         handles.val.gearbox='DD';
         %update image
-        image1=imread('./images/DDPMG.png');
-      
+        image1=imread(fullfile(fileparts(which('marina_gui.m')), 'images', 'DDPMG.png'));
+        
     case 'SG'
         handles.val.generator='SG';
         %Modify Gearbox Options
@@ -497,8 +497,8 @@ switch get(eventdata.NewValue,'Tag') % Get Tag of selected object.
         handles.val.gearbox='multi_stage';
 
         %update image                
-        image1=imread('./images/EESG_3G.png');
-
+        image1=imread(fullfile(fileparts(which('marina_gui.m')), 'images', 'EESG_3G.png'));
+        
     case 'hts'
         handles.val.generator='hts';       
         %Modify Gearbox Options
@@ -515,7 +515,7 @@ switch get(eventdata.NewValue,'Tag') % Get Tag of selected object.
         set(handles.DD, 'Value', 1);
         handles.val.gearbox='DD';
         %update image
-        image1=imread('./images/HTSG.png');
+        image1=imread(fullfile(fileparts(which('marina_gui.m')), 'images', 'HTSG.png'));
 end
 
         %plot image
@@ -564,11 +564,11 @@ switch get(eventdata.NewValue,'Tag') % Get Tag of selected object.
         %update image
         switch handles.val.generator
             case 'SG'
-                 image1=imread('./images/EESG.png');      
+                 image1=imread(fullfile(fileparts(which('marina_gui.m')), 'images', EESG.png'));      
             case 'PMG'
-                  image1=imread('./images/DDPMG.png');
+                  image1=imread(fullfile(fileparts(which('marina_gui.m')), 'images', DDPMG.png'));
             case 'hts'
-                  image1=imread('./images/HTSG.png');
+                  image1=imread(fullfile(fileparts(which('marina_gui.m')), 'images', 'HTSG.png'));
         end                
         
     case 'single_stage'
@@ -577,9 +577,9 @@ switch get(eventdata.NewValue,'Tag') % Get Tag of selected object.
         %update image
         switch handles.val.generator
             case 'IG'
-                 image1=imread('./images/DFIG_1G.png');      
+                 image1=imread(fullfile(fileparts(which('marina_gui.m')), 'images', 'DFIG_1G.png'));      
             case 'PMG'
-                  image1=imread('./images/PMG_1G.png');
+                 image1=imread(fullfile(fileparts(which('marina_gui.m')), 'images', 'PMG_1G.png'));
         end
 
                     
@@ -590,17 +590,17 @@ switch get(eventdata.NewValue,'Tag') % Get Tag of selected object.
         %update image
         switch handles.val.generator
             case 'SG'
-                 image1=imread('./images/EESG_3G.png');      
+                 image1=imread(fullfile(fileparts(which('marina_gui.m')), 'images', 'EESG_3G.png'));      
             case 'PMG'
-                  image1=imread('./images/PMG_3G.png');
+                  image1=imread(fullfile(fileparts(which('marina_gui.m')), 'images', 'PMG_3G.png'));
             case 'IG'
-                  image1=imread('./images/DFIG_3G.png');
+                  image1=imread(fullfile(fileparts(which('marina_gui.m')), 'images', 'DFIG_3G.png'));
         end
         % Code for when togglebutton1 is selected.
     case 'hydraulic_gear'
         handles.val.gearbox='hydraulic_gear';
         %update image
-        image1=imread('./images/EESG_hydraulics.png');
+        image1=imread(fullfile(fileparts(which('marina_gui.m')), 'images', 'EESG_hydraulics.png'));
         % Code for when togglebutton2 is selected.
     % Continue with more cases as necessary.
     otherwise
